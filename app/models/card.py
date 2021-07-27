@@ -26,5 +26,6 @@ class Card(db.Model):
             'audio_url': self.audio_url,
             'deck_id': self.deck_id,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'deck': self.deck
         }
