@@ -16,14 +16,13 @@ class Deck(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
 
-
-def to_dict(self):
-    return {
-        'id': self.id,
-        'title': self.title,
-        'description': self.description,
-        'public': self.public,
-        'creator_id': self.creator_id,
-        'created_at': self.created_at,
-        'updated_at': self.updated_at
-    }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
+            'public': self.public,
+            'creator_id': self.creator_id,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
+        }
