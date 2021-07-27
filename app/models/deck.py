@@ -16,6 +16,9 @@ class Deck(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
 
+    creator = db.relationship('User', back_populates='decks')
+    cards = db.relationship('Card', back_populates='deck')
+
     def to_dict(self):
         return {
             'id': self.id,
@@ -24,5 +27,6 @@ class Deck(db.Model):
             'public': self.public,
             'creator_id': self.creator_id,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'creator': self.creator
         }

@@ -15,6 +15,8 @@ class Card(db.Model):
                            default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
+    deck = db.relationship('Deck', back_populates='cards')
+
     def to_dict(self):
         return {
             'id': self.id,
