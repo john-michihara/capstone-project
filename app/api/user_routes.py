@@ -21,9 +21,9 @@ def user(id):
     return user.to_dict()
 
 
-@user_routes.route('/<int:id>/created-decks')
+@user_routes.route('/<int:id>/created')
 @login_required
-def user_created_decks(id):
+def user_created(id):
     decks = Deck.query.filter_by(creator_id=id).all()
     print(decks)
     return {'decks': [deck.to_dict() for deck in decks]}
