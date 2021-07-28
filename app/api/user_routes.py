@@ -25,5 +25,4 @@ def user(id):
 @login_required
 def user_created(id):
     decks = Deck.query.filter_by(creator_id=id).all()
-    print(decks)
     return {'decks': [deck.to_dict() for deck in decks]}
