@@ -1,7 +1,6 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from .deck import user_decks
 
 
 class User(db.Model, UserMixin):
@@ -13,8 +12,10 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     created_decks = db.relationship('Deck', back_populates='creator')
-    decks = db.relationship('Deck', secondary=user_decks,
-                            back_populates='users')
+    user_decks = db.relationship('UserDeck', back_populates='user')
+
+    # decks = db.relationship('Deck', secondary=user_decks,
+    #                         back_populates='users')
 
     @property
     def password(self):
@@ -32,5 +33,4 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            # 'user_decks': [deck.to_dict() for deck in self.decks]
         }

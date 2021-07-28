@@ -2,13 +2,13 @@ from .db import db
 from datetime import datetime
 
 
-user_decks = db.Table(
-    'user_decks',
-    db.Column('deck_id', db.Integer, db.ForeignKey(
-        'decks.id'), primary_key=True),
-    db.Column('user_id', db.Integer, db.ForeignKey(
-        'users.id'), primary_key=True)
-)
+# user_decks = db.Table(
+#     'user_decks',
+#     db.Column('deck_id', db.Integer, db.ForeignKey(
+#         'decks.id'), primary_key=True),
+#     db.Column('user_id', db.Integer, db.ForeignKey(
+#         'users.id'), primary_key=True)
+# )
 
 
 class Deck(db.Model):
@@ -27,8 +27,10 @@ class Deck(db.Model):
 
     creator = db.relationship('User', back_populates='created_decks')
     cards = db.relationship('Card', back_populates='deck')
-    users = db.relationship('User', secondary=user_decks,
-                            back_populates='decks')
+    user_decks = db.relationship('UserDeck', back_populates='deck')
+
+    # users = db.relationship('User', secondary=user_decks,
+    #                         back_populates='decks')
 
     def to_dict(self):
         return {
@@ -39,5 +41,4 @@ class Deck(db.Model):
             'creator_id': self.creator_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'users': [user.to_dict() for user in self.users]
         }
