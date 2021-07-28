@@ -1,4 +1,4 @@
-const SET_DECKS = 'decks/SET_DECKS'
+const SET_DECKS = 'decks/SET_DECKS';
 
 const setDecks = (decks) => ({
   type: SET_DECKS,
@@ -13,7 +13,7 @@ export const getDecks = () => async (dispatch) => {
     const { decks } = await response.json();
     dispatch(setDecks(decks));
   }
-}
+};
 
 export default function reducer(state = initialState, action) {
   let newState;
