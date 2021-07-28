@@ -28,5 +28,4 @@ class Deck(db.Model):
             'creator_id': self.creator_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'creator': self.creator
         }
