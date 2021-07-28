@@ -83,17 +83,3 @@
 .icon {
   margin-left: 10px;
 }
-
-.create {
-  color: rgb(66, 87, 178);
-  background-color: rgb(119, 221, 221);
-  border: none;
-  padding: 6px 12px;
-  font-size: 14px;
-  border-radius: 2px;
-  cursor: pointer;
-}
-
-.create:hover {
-  background-color: rgb(108, 204, 204);
-}

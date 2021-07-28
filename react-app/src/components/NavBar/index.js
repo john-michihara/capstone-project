@@ -1,21 +1,14 @@
 import React from 'react';
 // import LogoutButton from '../auth/LogoutButton';
 import NavBarLeft from '../NavBarLeft';
+import NavBarRight from '../NavBarRight';
 import styles from './NavBar.module.css';
 
 const NavBar = () => {
   return (
     <nav className={styles.container}>
       <NavBarLeft />
-      <div className={styles.right}>
-        <form className={styles.searchForm}>
-          <span>
-            <i className="fas fa-search"></i>
-          </span>
-          <input className={styles.searchInput} type='text' placeholder='Search' />
-        </form>
-        <button>P</button>
-      </div>
+      <NavBarRight />
     </nav>
 
     // <nav>
