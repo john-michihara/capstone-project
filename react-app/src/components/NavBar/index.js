@@ -1,0 +1,44 @@
+import React from 'react';
+// import LogoutButton from '../auth/LogoutButton';
+import NavBarLeft from '../NavBarLeft';
+import NavBarRight from '../NavBarRight';
+import styles from './NavBar.module.css';
+
+const NavBar = () => {
+  return (
+    <nav className={styles.container}>
+      <NavBarLeft />
+      <NavBarRight />
+    </nav>
+
+    // <nav>
+    //   <ul>
+    //     <li>
+    //       <NavLink to='/' exact={true} activeClassName='active'>
+    //         Home
+    //       </NavLink>
+    //     </li>
+    //     <li>
+    //       <NavLink to='/login' exact={true} activeClassName='active'>
+    //         Login
+    //       </NavLink>
+    //     </li>
+    //     <li>
+    //       <NavLink to='/sign-up' exact={true} activeClassName='active'>
+    //         Sign Up
+    //       </NavLink>
+    //     </li>
+    //     <li>
+    //       <NavLink to='/users' exact={true} activeClassName='active'>
+    //         Users
+    //       </NavLink>
+    //     </li>
+    //     <li>
+    //       <LogoutButton />
+    //     </li>
+    //   </ul>
+    // </nav>
+  );
+}
+
+export default NavBar;
