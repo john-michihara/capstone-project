@@ -43,6 +43,14 @@ def upgrade():
                     sa.ForeignKeyConstraint(['creator_id'], ['users.id'])
                     )
 
+    op.create_table('user_decks',
+                    sa.Column('deck_id', sa.Integer(), nullable=False),
+                    sa.Column('user_id', sa.Integer(), nullable=False),
+                    sa.PrimaryKeyConstraint('deck_id', 'user_id'),
+                    sa.ForeignKeyConstraint(['deck_id'], ['decks.id']),
+                    sa.ForeignKeyConstraint(['user_id'], ['users.id'])
+                    )
+
     op.create_table('cards',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('front', sa.Text(), nullable=False),
