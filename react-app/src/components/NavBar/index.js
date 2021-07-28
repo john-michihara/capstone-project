@@ -1,25 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
-import styles from './NavigationBar.module.css';
+// import LogoutButton from '../auth/LogoutButton';
+import NavBarLeft from '../NavBarLeft';
+import styles from './NavBar.module.css';
 
 const NavBar = () => {
   return (
     <nav className={styles.container}>
-      <div className={styles.left}>
-        <h1 className={styles.logo}>App Name</h1>
-        <NavLink
-          className={styles.home}
-          activeClassName={styles.active}
-          to='/' exact>
-          Home
-        </NavLink>
-        <button>Your library</button>
-        <button>Create</button>
-      </div>
+      <NavBarLeft />
       <div className={styles.right}>
-        <form>
-          <input type='text' placeholder='Search' />
+        <form className={styles.searchForm}>
+          <span>
+            <i className="fas fa-search"></i>
+          </span>
+          <input className={styles.searchInput} type='text' placeholder='Search' />
         </form>
         <button>P</button>
       </div>
