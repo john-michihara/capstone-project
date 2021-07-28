@@ -1,18 +1,18 @@
-const SET_CREATED_DECKS = 'decks/SET_CREATED_DECKS';
+const SET_USER_DECKS = 'decks/SET_USER_DECKS';
 
-const setCreatedDecks = (decks) => ({
-  type: SET_CREATED_DECKS,
-  createdDecks: decks
+const setUserDecks = (decks) => ({
+  type: SET_USER_DECKS,
+  userDecks: decks
 });
 
 const initialState = {};
 
-export const getCreatedDecks = (userId) => async (dispatch) => {
-  const response = await fetch(`/api/users/${userId}/created`);
+export const getUserDecks = (userId) => async (dispatch) => {
+  const response = await fetch(`/api/users/${userId}/decks`);
   if (response.ok) {
     const { decks } = await response.json();
     console.log(decks)
-    dispatch(setCreatedDecks(decks))
+    dispatch(setUserDecks(decks))
   }
 };
 
@@ -20,9 +20,9 @@ export default function reducer(state = initialState, action) {
   let newState;
 
   switch (action.type) {
-    case SET_CREATED_DECKS:
+    case SET_USER_DECKS:
       newState = {};
-      action.createdDecks.forEach((deck, idx) => {
+      action.userDecks.forEach((deck, idx) => {
         newState[idx] = deck;
       })
       return {

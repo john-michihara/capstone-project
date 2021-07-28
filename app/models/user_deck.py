@@ -15,3 +15,12 @@ class UserDeck(db.Model):
 
     user = db.relationship('User', back_populates='user_decks')
     deck = db.relationship('Deck', back_populates='user_decks')
+
+    def to_dict(self):
+        return {
+            'user_id': self.user_id,
+            'deck_id': self.deck_id,
+            'updated_at': self.updated_at,
+            'last_studied': self.last_studied,
+            'details': self.deck.to_dict()
+        }
