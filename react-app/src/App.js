@@ -12,7 +12,6 @@ import Library from './components/Library';
 import CreateDeckForm from './components/CreateDeckFrom';
 import UpdateDeckForm from './components/UpdateDeckForm';
 import { authenticate } from './store/session';
-import CreateDropdown from './components/CreateDropdown';
 
 function App() {
   const [loaded, setLoaded] = useState(false);

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDeck } from '../../store/decks';
 import { updateDeck } from '../../store/decks';
-import styles from './UpdateDeckForm.module.css';
+import { deleteDeck } from '../../store/decks';
+// import styles from './UpdateDeckForm.module.css';
 
 const UpdateDeckForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { deckId } = useParams();
   const deck = useSelector(state => state.decks[deckId]);
   const user = useSelector(state => state.session.user);
@@ -17,23 +19,36 @@ const UpdateDeckForm = () => {
   const [description, setDescription] = useState('');
   const [viewable, setViewable] = useState(false);
 
-  useEffect(async () => {
-    await dispatch(getDeck(parseInt(deckId)));
-  }, [dispatch]);
+  useEffect(() => {
+    (async () => {
+      await dispatch(getDeck(parseInt(deckId)));
+    })();
+  }, [dispatch, deckId]);
 
-  useEffect(async () => {
-    setTitle(deck?.title || '');
-    setDescription(deck?.description || '');
-    setViewable(deck?.public || false)
+  useEffect(() => {
+    (async () => {
+      setTitle(deck?.title || '');
+      setDescription(deck?.description || '');
+      setViewable(deck?.public || false)
+    })();
   }, [deck]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(updateDeck(deckId, title, description, viewable, userId));
     if (data) {
-      setErrors(data)
+      setErrors(data);
     }
   };
+
+  const handleDelete = async (e) => {
+    const data = await dispatch(deleteDeck(parseInt(deckId)))
+    if (data) {
+      setErrors(data);
+    } else {
+      history.push('/');
+    }
+  }
 
   return (
     <>
@@ -73,6 +88,7 @@ const UpdateDeckForm = () => {
         </div>
         <button type='submit'>Create</button>
       </form>
+      <button onClick={() => handleDelete(deckId)}>Delete Deck</button>
     </>
   );
 

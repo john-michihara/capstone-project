@@ -25,9 +25,11 @@ class Deck(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False,
                            default=datetime.utcnow)
 
-    creator = db.relationship('User', back_populates='created_decks')
+    creator = db.relationship('User', lazy='subquery',
+                              back_populates='created_decks')
     cards = db.relationship('Card', back_populates='deck')
-    user_decks = db.relationship('UserDeck', back_populates='deck')
+    user_decks = db.relationship(
+        'UserDeck', back_populates='deck', cascade="delete, merge, save-update")
 
     # users = db.relationship('User', secondary=user_decks,
     #                         back_populates='decks')

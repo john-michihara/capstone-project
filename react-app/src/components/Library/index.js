@@ -33,7 +33,7 @@ const Library = () => {
   useEffect(() => {
     dispatch(getUserDecks(user.id));
     dispatch(getCreatedDecks(user.id));
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   return (
     <>
