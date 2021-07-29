@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Decks from './components/Decks';
+import Library from './components/Library';
 import { authenticate } from './store/session';
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
           <Decks />
+        </ProtectedRoute>
+        <ProtectedRoute path='/library' exact={true} >
+          <Library />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

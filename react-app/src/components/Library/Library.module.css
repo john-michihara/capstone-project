@@ -1,0 +1,67 @@
+
+
+.containerSets {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(246, 247, 251);
+}
+
+.offsetContainer {
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+}
+
+.sets {
+  height: 100%;
+  max-width: 940px;
+  padding: 40px 40px 40px 0;
+}
+
+.setsHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.button {
+  font-size: 14px;
+  color: rgb(100, 111, 144);
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 2px solid rgb(217, 221, 232);
+  background-color: rgb(255, 255, 255);
+}
+
+.button:hover {
+  border: 2px solid rgb(74, 82, 107);
+}
+
+.filter {
+  margin-right: 10px;
+}
+
+.form {
+  border-bottom: 2px solid rgb(217, 221, 232);
+}
+
+.input {
+  background-color: inherit;
+  border: none;
+  padding: 10px 100px 10px 0;
+  outline: none;
+  font-size: 14px;
+}
+
+.input::placeholder {
+  color: rgb(117, 117, 117);
+}
+
+.icon {
+  color: rgb(135, 142, 163);
+  margin-right: 16px;
+}
+
+
