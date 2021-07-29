@@ -30,10 +30,8 @@ const Library = () => {
     return () => document.removeEventListener('click', closeMenu);
   }, [showMenu]);
 
-
-
   useEffect(() => {
-    dispatch(getUserDecks(user.id))
+    dispatch(getUserDecks(user.id));
     dispatch(getCreatedDecks(user.id));
   }, [dispatch]);
 
@@ -66,16 +64,6 @@ const Library = () => {
       </div>
     </>
     // <>
-
-
-    //   <h1>Users created decks</h1>
-    //   {createdDecks.map(deck => (
-    //     <div>
-    //       <span key={deck.id}>{deck.title}</span>
-    //       <span key={deck.id}>{deck.updated_at}</span>
-    //     </div>
-    //   ))}
-
     //   <h1>Last Studied</h1>
     //   {userDecks.map(deck => (
     //     <div>
