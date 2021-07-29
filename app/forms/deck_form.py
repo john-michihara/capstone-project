@@ -9,7 +9,21 @@ class CreateDeckForm(FlaskForm):
         Length(max=60, message='Please enter a title that is less than 60 characters.')
     ])
     description = StringField('description', validators=[
-        Length(max=255, message='Please enter a description that is less than 255 characters.')
+        Length(
+            max=255, message='Please enter a description that is less than 255 characters.')
     ])
     viewable = BooleanField('viewable')
     creatorId = IntegerField('creator_id')
+
+
+class UpdateDeckForm(FlaskForm):
+    title = StringField('title', validators=[
+        DataRequired(message='Please enter a title to update your deck.'),
+        Length(max=60, message='Please enter a title that is less than 60 characters.')
+    ])
+    description = StringField('description', validators=[
+        Length(
+            max=255, message='Please enter a description that is less than 255 characters.')
+    ])
+    viewable = BooleanField('viewable')
+    userId = IntegerField('user_id')

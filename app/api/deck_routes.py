@@ -1,6 +1,7 @@
 from flask import Blueprint, request
+from datetime import datetime
 from app.models import db, Deck, UserDeck
-from app.forms import CreateDeckForm
+from app.forms import CreateDeckForm, UpdateDeckForm
 
 
 deck_routes = Blueprint('decks', __name__)
@@ -46,4 +47,34 @@ def create_deck():
         db.session.commit()
         return deck.to_dict()
 
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@deck_routes.route('/<int:id>')
+def get_deck(id):
+    deck = Deck.query.get(id)
+    return {'deck': deck.to_dict()}
+
+
+@deck_routes.route('/<int:id>', methods=['PUT'])
+def update_deck(id):
+    form = UpdateDeckForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        deck = Deck.query.get(id)
+        deck.title = form.data['title']
+        deck.description = form.data['description'],
+        deck.public = form.data['viewable']
+        user_id = form.data['userId']
+        db.session.add(deck)
+        db.session.commit()
+
+        user_deck = UserDeck.query.filter(
+            UserDeck.deck_id == id,
+            UserDeck.user_id == user_id
+        ).first()
+        user_deck.updated_at = datetime.utcnow()
+        db.session.add(user_deck)
+        db.session.commit()
+        return deck.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

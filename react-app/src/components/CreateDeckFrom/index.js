@@ -14,7 +14,7 @@ const CreateDeckForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(createDeck(title, description, viewable, user.id))
+    const data = await dispatch(createDeck(title, description, viewable, user.id));
     if (data) {
       setErrors(data);
     }
