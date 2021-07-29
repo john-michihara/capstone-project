@@ -78,3 +78,11 @@ def update_deck(id):
         db.session.commit()
         return deck.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@deck_routes.route('/<int:id>', methods=['DELETE'])
+def delete_deck(id):
+    deck = Deck.query.get(id)
+    db.session.delete(deck)
+    db.session.commit()
+    return deck.to_dict()

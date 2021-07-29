@@ -12,7 +12,7 @@ const Decks = () => {
   useEffect(() => {
     dispatch(getDecks());
     dispatch(getCreatedDecks(user.id));
-  }, [dispatch]);
+  }, [dispatch, user.id]);
 
   return (
     <>
