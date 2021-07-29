@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from app.models import db, Deck
+from app.models import db, Deck, UserDeck
 from app.forms import CreateDeckForm
 
 
@@ -23,7 +23,7 @@ def get_decks():
     return {'decks': [deck.to_dict() for deck in decks]}
 
 
-@deck_routes.route('/', methods=['POST'])
+@deck_routes.route('', methods=['POST'])
 def create_deck():
     form = CreateDeckForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -31,10 +31,19 @@ def create_deck():
         deck = Deck(
             title=form.data['title'],
             description=form.data['description'],
-            public=form.data['public'],
-            creator_id=form.data['creator_id']
+            public=form.data['viewable'],
+            creator_id=form.data['creatorId']
         )
         db.session.add(deck)
         db.session.commit()
+
+        user_deck = UserDeck(
+            deck_id=deck.id,
+            user_id=deck.creator_id,
+            updated_at=deck.updated_at
+        )
+        db.session.add(user_deck)
+        db.session.commit()
         return deck.to_dict()
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
