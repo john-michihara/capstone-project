@@ -9,7 +9,10 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Decks from './components/Decks';
 import Library from './components/Library';
+import CreateDeckForm from './components/CreateDeckFrom';
+import UpdateDeckForm from './components/UpdateDeckForm';
 import { authenticate } from './store/session';
+import CreateDropdown from './components/CreateDropdown';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +51,12 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/library' exact={true} >
           <Library />
+        </ProtectedRoute>
+        <ProtectedRoute path='/create' exact={true} >
+          <CreateDeckForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/decks/:deckId' exact={true} >
+          <UpdateDeckForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
