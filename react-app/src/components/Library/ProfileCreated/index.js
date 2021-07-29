@@ -8,7 +8,7 @@ const ProfileCreated = () => {
   return (
     <div>
       {createdDecks.map(deck => (
-        <div className={styles.container}>
+        <div className={styles.container} key={deck.id}>
           <div className={styles.details}>
             <span className={styles.number}>0 Terms</span>
           </div>

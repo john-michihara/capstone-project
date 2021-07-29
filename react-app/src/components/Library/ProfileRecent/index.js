@@ -8,7 +8,7 @@ const ProfileRecent = () => {
   return (
     <div>
       {userDecks.map(deck => (
-        <div className={styles.container}>
+        <div className={styles.container} key={deck.details.id}>
           <div className={styles.details}>
             <span className={styles.number}>0 Terms</span>
             <span className={styles.creator}>{deck.details.creator.username}</span>
