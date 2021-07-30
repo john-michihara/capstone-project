@@ -41,13 +41,12 @@ def create_deck():
         user_deck = UserDeck(
             deck_id=deck.id,
             user_id=deck.creator_id,
-            updated_at=deck.updated_at
+            updated_at=datetime.utcnow()
         )
         db.session.add(user_deck)
         db.session.commit()
 
-        print('$$$$$$$$$$$$$$$$$$$$$')
-        print(form.data)
+        print(request.data)
 
         db.session.commit()
         return deck.to_dict()

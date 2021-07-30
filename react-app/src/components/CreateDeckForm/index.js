@@ -7,6 +7,7 @@ import styles from './CreateDeckForm.module.css';
 
 const CreateDeckForm = () => {
   const dispatch = useDispatch();
+  const [highlight, setHighlight] = useState(false)
   const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -81,25 +82,57 @@ const CreateDeckForm = () => {
             </div>
           </div>
         </div>
-        <div className={styles.cardContainer}>
-          {fields.map((field, idx) => (
-            <div key={idx}>
-              <label>Front</label>
-              <input
-                type='text'
-                value={field.front}
-                onChange={e => editCard(e, idx, 'front')}
-              ></input>
-              <label>Back</label>
-              <input
-                type='text'
-                value={field.back}
-                onChange={e => editCard(e, idx, 'back')}
-              ></input>
-              <button type='button' onClick={() => deleteCard(idx)}>Delete</button>
+        <div className={styles.cardsContainer}>
+          <div className={styles.cardsMarginContainer}>
+            {fields.map((field, idx) => (
+              <div className={styles.cardContainer} key={idx}>
+                <div className={styles.cardHeader}>
+                  <span className={styles.cardNumber}>{idx + 1}</span>
+                  <span onClick={() => deleteCard(idx)} >
+                    <i className="far fa-trash-alt"></i>
+                  </span>
+                </div>
+                <div className={styles.contentContainer}>
+                  <div className={styles.content}>
+                    <input
+                      className={styles.input}
+                      type='text'
+                      value={field.front}
+                      onChange={e => editCard(e, idx, 'front')}
+                      placeholder='Enter term'
+                    ></input>
+                    <label className={styles.label}>TERM</label>
+                  </div>
+                  <div className={styles.content}>
+                    <input
+                      className={styles.input}
+                      type='text'
+                      value={field.back}
+                      onChange={e => editCard(e, idx, 'back')}
+                      placeholder='Enter definition'
+                    ></input>
+                    <label className={styles.label}>DEFINITION</label>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <button
+              type='button'
+              onClick={addCard}
+              className={styles.addButton}
+              onMouseOver={() => setHighlight(true)}
+              onMouseOut={() => setHighlight(false)}
+            >
+              <span
+                className={styles.addButtonText}
+                style={highlight ? { color: 'rgb(254, 204, 57)', borderBottom: '5px solid rgb(254, 204, 57)' } : { color: 'rgb(48, 53, 69)', borderBottom: '5px solid rgb(60, 207, 207)' }}
+              >+ ADD CARD
+              </span>
+            </button>
+            <div>
+              <button className={styles.largeCreateButton}>Create</button>
             </div>
-          ))}
-          <button type='button' onClick={addCard}>Add card</button>
+          </div>
         </div>
       </form>
     </>

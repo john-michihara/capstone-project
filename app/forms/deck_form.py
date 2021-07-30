@@ -3,11 +3,6 @@ from wtforms import Form, StringField, BooleanField, IntegerField, FieldList, Fo
 from wtforms.validators import DataRequired, Length
 
 
-class CardForm(Form):
-    front = StringField('front')
-    back = StringField('back')
-
-
 class CreateDeckForm(FlaskForm):
     title = StringField('title', validators=[
         DataRequired(message='Please enter a title to create your deck.'),
@@ -19,7 +14,6 @@ class CreateDeckForm(FlaskForm):
     ])
     viewable = BooleanField('viewable')
     creatorId = IntegerField('creator_id')
-    cards = FieldList(FormField(CardForm), min_entries=2)
 
 
 class UpdateDeckForm(FlaskForm):
