@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from datetime import datetime
-from app.models import db, Deck, UserDeck
+from app.models import db, Deck, UserDeck, Card
 from app.forms import CreateDeckForm, UpdateDeckForm
 
 
@@ -44,6 +44,11 @@ def create_deck():
             updated_at=deck.updated_at
         )
         db.session.add(user_deck)
+        db.session.commit()
+
+        print('$$$$$$$$$$$$$$$$$$$$$')
+        print(form.data)
+
         db.session.commit()
         return deck.to_dict()
 

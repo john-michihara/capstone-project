@@ -1,6 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, IntegerField
+from wtforms import Form, StringField, BooleanField, IntegerField, FieldList, FormField, Form, TextField
 from wtforms.validators import DataRequired, Length
+
+
+class CardForm(Form):
+    front = StringField('front')
+    back = StringField('back')
 
 
 class CreateDeckForm(FlaskForm):
@@ -14,6 +19,7 @@ class CreateDeckForm(FlaskForm):
     ])
     viewable = BooleanField('viewable')
     creatorId = IntegerField('creator_id')
+    cards = FieldList(FormField(CardForm), min_entries=2)
 
 
 class UpdateDeckForm(FlaskForm):

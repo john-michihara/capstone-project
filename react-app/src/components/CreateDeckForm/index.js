@@ -11,15 +11,43 @@ const CreateDeckForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [viewable, setViewable] = useState(false);
+  const [fields, setFields] = useState([{ front: '', back: '' }, { front: '', back: '' }]);
 
   const user = useSelector(state => state.session.user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(createDeck(title, description, viewable, user.id));
+
+    const formData = {
+      title,
+      description,
+      viewable,
+      creatorId: user.id
+    };
+
+    console.log(fields)
+    const data = await dispatch(createDeck(formData, fields));
     if (data) {
       setErrors(data);
     }
+  };
+
+  const editCard = (e, idx, key) => {
+    const newFields = [...fields];
+    newFields[idx][key] = e.target.value;
+    setFields(newFields);
+  };
+
+  const addCard = () => {
+    const newFields = [...fields];
+    newFields.push({ front: '', back: '' });
+    setFields(newFields);
+  };
+
+  const deleteCard = (idx) => {
+    const newFields = [...fields];
+    newFields.splice(idx, 1);
+    setFields(newFields);
   };
 
   return (
@@ -53,7 +81,26 @@ const CreateDeckForm = () => {
             </div>
           </div>
         </div>
-        <div className={styles.cardContainer}></div>
+        <div className={styles.cardContainer}>
+          {fields.map((field, idx) => (
+            <div key={idx}>
+              <label>Front</label>
+              <input
+                type='text'
+                value={field.front}
+                onChange={e => editCard(e, idx, 'front')}
+              ></input>
+              <label>Back</label>
+              <input
+                type='text'
+                value={field.back}
+                onChange={e => editCard(e, idx, 'back')}
+              ></input>
+              <button type='button' onClick={() => deleteCard(idx)}>Delete</button>
+            </div>
+          ))}
+          <button type='button' onClick={addCard}>Add card</button>
+        </div>
       </form>
     </>
   );
