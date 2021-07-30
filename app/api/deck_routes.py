@@ -46,13 +46,9 @@ def create_deck():
         db.session.add(user_deck)
         db.session.commit()
 
-        card1 = Card(
-            front=form.data['front1'],
-            back=form.data['back1'],
-            deck_id=deck.id
-        )
+        print('$$$$$$$$$$$$$$$$$$$$$')
+        print(form.data)
 
-        db.session.add(card1)
         db.session.commit()
         return deck.to_dict()
 

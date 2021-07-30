@@ -11,8 +11,7 @@ const CreateDeckForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [viewable, setViewable] = useState(false);
-  const [front1, setFront1] = useState('');
-  const [back1, setBack1] = useState('');
+  const [fields, setFields] = useState([{ front: '', back: '' }, { front: '', back: '' }]);
 
   const user = useSelector(state => state.session.user);
 
@@ -26,15 +25,29 @@ const CreateDeckForm = () => {
       creatorId: user.id
     };
 
-    const card1Data = {
-      front1,
-      back1
-    };
-
-    const data = await dispatch(createDeck(formData, card1Data));
+    console.log(fields)
+    const data = await dispatch(createDeck(formData, fields));
     if (data) {
       setErrors(data);
     }
+  };
+
+  const editCard = (e, idx, key) => {
+    const newFields = [...fields];
+    newFields[idx][key] = e.target.value;
+    setFields(newFields);
+  };
+
+  const addCard = () => {
+    const newFields = [...fields];
+    newFields.push({ front: '', back: '' });
+    setFields(newFields);
+  };
+
+  const deleteCard = (idx) => {
+    const newFields = [...fields];
+    newFields.splice(idx, 1);
+    setFields(newFields);
   };
 
   return (
@@ -69,18 +82,24 @@ const CreateDeckForm = () => {
           </div>
         </div>
         <div className={styles.cardContainer}>
-          <label>Front</label>
-          <input
-            type='text'
-            value={front1}
-            onChange={e => setFront1(e.target.value)}
-          ></input>
-          <label>Back</label>
-          <input
-            type='text'
-            value={back1}
-            onChange={e => setBack1(e.target.value)}
-          ></input>
+          {fields.map((field, idx) => (
+            <div key={idx}>
+              <label>Front</label>
+              <input
+                type='text'
+                value={field.front}
+                onChange={e => editCard(e, idx, 'front')}
+              ></input>
+              <label>Back</label>
+              <input
+                type='text'
+                value={field.back}
+                onChange={e => editCard(e, idx, 'back')}
+              ></input>
+              <button type='button' onClick={() => deleteCard(idx)}>Delete</button>
+            </div>
+          ))}
+          <button type='button' onClick={addCard}>Add card</button>
         </div>
       </form>
     </>
