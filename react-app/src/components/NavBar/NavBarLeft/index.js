@@ -6,7 +6,7 @@ import styles from './NavBarLeft.module.css';
 const NavBarLeft = () => {
   return (
     <div className={styles.container}>
-      <h1 className={styles.logo}>Flashcards</h1>
+      <NavLink to='/' exact={true} className={styles.logo}>Flashcards</NavLink>
       <NavLink
         className={styles.home}
         activeClassName={styles.active}

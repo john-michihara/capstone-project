@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createDeck } from '../../store/decks';
+import CreateDeckTitle from './CreateDeckTitle.js';
+import CreateDeckDescription from './CreateDeckDescription';
 import styles from './CreateDeckForm.module.css';
 
 const CreateDeckForm = () => {
@@ -10,9 +12,6 @@ const CreateDeckForm = () => {
   const [description, setDescription] = useState('');
   const [viewable, setViewable] = useState(false);
 
-  const [highlightTitle, setHighlightTitle] = useState(false);
-  const [highlightDescription, setHighlightDescription] = useState(false);
-
   const user = useSelector(state => state.session.user);
 
   const handleSubmit = async (e) => {
@@ -21,7 +20,7 @@ const CreateDeckForm = () => {
     if (data) {
       setErrors(data);
     }
-  }
+  };
 
   return (
     <>
@@ -38,66 +37,12 @@ const CreateDeckForm = () => {
               <div key={idx}>{error}</div>
             ))}
           </div>
-
-
-          <div>
-            {title.length > 0 &&
-              <label
-                className={styles.titleLabel}
-                style={
-                  highlightTitle ?
-                    { color: 'rgb(68, 90, 176)' } :
-                    { color: 'rgb(148, 156, 179)' }
-                }
-              >Title</label>
-            }
-            <input
-              className={styles.titleInput}
-              type='text'
-              name='title'
-              onChange={e => setTitle(e.target.value)}
-              value={title}
-              placeholder='Enter a title, like "Biology - Chapter 22: Evolution'
-              style={
-                title.length > 0 ?
-                  { padding: '30px 0 10px 20px' } :
-                  { padding: '20px 0 20px 20px' }
-              }
-              onFocus={() => setHighlightTitle(true)}
-              onBlur={() => setHighlightTitle(false)}
-            ></input>
-          </div>
-          <div>
-            {description.length > 0 &&
-              <label
-                className={styles.descriptionLabel}
-                style={
-                  highlightDescription ?
-                    { color: 'rgb(68, 90, 176)' } :
-                    { color: 'rgb(148, 156, 179)' }
-                }
-              >Description</label>
-            }
-            <textarea
-              className={styles.descriptionInput}
-              // type='text'
-              name='description'
-              onChange={e => setDescription(e.target.value)}
-              value={description}
-              placeholder='Add a description...'
-              style={
-                description.length > 0 ?
-                  { padding: '28px 0 10px 20px' } :
-                  { padding: '20px 0 20px 20px' }
-              }
-              onFocus={() => setHighlightDescription(true)}
-              onBlur={() => setHighlightDescription(false)}
-            ></textarea>
-          </div>
+          <CreateDeckTitle title={title} setTitle={setTitle} />
+          <CreateDeckDescription description={description} setDescription={setDescription} />
           <div className={styles.import}>
             <button className={styles.importButton} type='button'>+ Import from Word, Excel, Google Docs, etc.</button>
             <div>
-              <label>Visible to Everyone</label>
+              <label className={styles.label}>Visible to Everyone</label>
               <input
                 className={styles.viewable}
                 type='checkbox'

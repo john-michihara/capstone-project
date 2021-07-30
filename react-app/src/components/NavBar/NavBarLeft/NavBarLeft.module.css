@@ -8,6 +8,8 @@
   font-size: 20px;
   margin-right: 32px;
   cursor: pointer;
+  text-decoration: none;
+  font-weight: bolder;
 }
 
 .home {

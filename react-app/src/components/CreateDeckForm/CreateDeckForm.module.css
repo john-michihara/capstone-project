@@ -29,7 +29,6 @@
   top: 0;
   background-color: white;
   width: 100%;
-  box-shadow: purple;
 }
 
 .title {
@@ -52,61 +51,6 @@
   background-color: rgb(46, 158, 158);
 }
 
-.titleInput {
-  width: 100%;
-  background-color: rgb(246, 247, 251);
-  border: none;
-  outline: none;
-  font-size: 16px;
-  padding: 20px 0 20px 20px;
-  border-bottom: 2px solid rgb(246, 247, 251);
-  font-weight: bold;
-  border-radius: 2px;
-
-}
-
-.titleInput:focus {
-  border-bottom: 2px solid rgb(68, 90, 176);
-}
-
-.titleLabel {
-  position: absolute;
-  font-size: 13px;
-  margin: 8px 20px;
-  font-weight: bold;
-}
-
-.titleLabel:focus {
-  color: rgb(68, 90, 176);
-}
-
-.descriptionInput {
-  width: 100%;
-  background-color: rgb(246, 247, 251);
-  border: none;
-  outline: none;
-  margin-top: 25px;
-  height: 120px;
-  font-size: 16px;
-  line-height: 24px;
-  border-radius: 2px;
-  border-bottom: 2px solid rgb(246, 247, 251);
-}
-
-.descriptionLabel {
-  position: absolute;
-  font-size: 13px;
-  margin: 32px 20px;
-  font-weight: bold;
-}
-
-.descriptionInput::placeholder {
-  color: rgb(117, 117, 117);
-}
-
-.descriptionInput:focus {
-  border-bottom: 2px solid rgb(68, 90, 176);
-}
 
 .import {
   display: flex;
@@ -130,6 +74,10 @@
 
 .viewable {
   margin-left: 10px;
+}
+
+.label {
+  font-weight: bold;
 }
 
 .cardContainer {
