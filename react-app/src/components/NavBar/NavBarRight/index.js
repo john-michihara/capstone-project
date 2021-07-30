@@ -1,4 +1,5 @@
 import React from 'react';
+import ProfileDropdown from '../ProfileDropdown';
 import styles from './NavBarRight.module.css';
 
 const NavBarRight = () => {
@@ -10,7 +11,7 @@ const NavBarRight = () => {
         </span>
         <input className={styles.input} type='text' placeholder='Search' />
       </form>
-      <button className={styles.profile}>J</button>
+      <ProfileDropdown />
     </div>
   );
 };

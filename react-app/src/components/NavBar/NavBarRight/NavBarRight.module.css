@@ -27,12 +27,3 @@
 .input::placeholder {
   color: rgb(148, 156, 179);
 }
-
-.profile {
-  background-color: gold;
-  border: none;
-  border-radius: 15px;
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-}

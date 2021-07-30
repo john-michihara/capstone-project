@@ -6,9 +6,9 @@ import ProfileHeader from './ProfileHeader';
 import ProfileDropdownMenu from './ProfileDropdown';
 import ProfileRecent from './ProfileRecent';
 import ProfileCreated from './ProfileCreated';
-import styles from './Library.module.css';
+import styles from './Profile.module.css';
 
-const Library = () => {
+const Profile = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
 
@@ -75,4 +75,4 @@ const Library = () => {
   );
 };
 
-export default Library;
+export default Profile;

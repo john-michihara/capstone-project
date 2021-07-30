@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Decks from './components/Decks';
-import Library from './components/Library';
+import Profile from './components/Profile';
 import CreateDeckForm from './components/CreateDeckForm';
 import UpdateDeckForm from './components/UpdateDeckForm';
 import { authenticate } from './store/session';
@@ -48,8 +48,8 @@ function App() {
           <h1>My Home Page</h1>
           <Decks />
         </ProtectedRoute>
-        <ProtectedRoute path='/library' exact={true} >
-          <Library />
+        <ProtectedRoute path='/profile/:username' exact={true} >
+          <Profile />
         </ProtectedRoute>
         <ProtectedRoute path='/create-deck' exact={true} >
           <CreateDeckForm />
