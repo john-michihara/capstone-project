@@ -35,7 +35,7 @@ export const getDeck = (id) => async (dispatch) => {
   }
 }
 
-export const createDeck = (title, description, viewable, creatorId) => async (dispatch) => {
+export const createDeck = ({ title, description, viewable, creatorId }, { front1, back1 }) => async (dispatch) => {
   const response = await fetch('/api/decks', {
     method: 'POST',
     headers: {
@@ -45,7 +45,9 @@ export const createDeck = (title, description, viewable, creatorId) => async (di
       title,
       description,
       viewable,
-      creatorId
+      creatorId,
+      front1,
+      back1
     })
   });
 

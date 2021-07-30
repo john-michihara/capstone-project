@@ -11,12 +11,27 @@ const CreateDeckForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [viewable, setViewable] = useState(false);
+  const [front1, setFront1] = useState('');
+  const [back1, setBack1] = useState('');
 
   const user = useSelector(state => state.session.user);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(createDeck(title, description, viewable, user.id));
+
+    const formData = {
+      title,
+      description,
+      viewable,
+      creatorId: user.id
+    };
+
+    const card1Data = {
+      front1,
+      back1
+    };
+
+    const data = await dispatch(createDeck(formData, card1Data));
     if (data) {
       setErrors(data);
     }
@@ -53,7 +68,20 @@ const CreateDeckForm = () => {
             </div>
           </div>
         </div>
-        <div className={styles.cardContainer}></div>
+        <div className={styles.cardContainer}>
+          <label>Front</label>
+          <input
+            type='text'
+            value={front1}
+            onChange={e => setFront1(e.target.value)}
+          ></input>
+          <label>Back</label>
+          <input
+            type='text'
+            value={back1}
+            onChange={e => setBack1(e.target.value)}
+          ></input>
+        </div>
       </form>
     </>
   );

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, IntegerField
+from wtforms import StringField, BooleanField, IntegerField, TextField
 from wtforms.validators import DataRequired, Length
 
 
@@ -14,6 +14,8 @@ class CreateDeckForm(FlaskForm):
     ])
     viewable = BooleanField('viewable')
     creatorId = IntegerField('creator_id')
+    front1 = TextField('front')
+    back1 = TextField('back')
 
 
 class UpdateDeckForm(FlaskForm):
