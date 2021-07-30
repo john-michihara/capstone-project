@@ -1,0 +1,26 @@
+.input {
+  width: 100%;
+  background-color: rgb(246, 247, 251);
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 20px 0 20px 20px;
+  border-bottom: 2px solid rgb(246, 247, 251);
+  font-weight: bold;
+  border-radius: 2px;
+}
+
+.input:focus {
+  border-bottom: 2px solid rgb(68, 90, 176);
+}
+
+.label {
+  position: absolute;
+  font-size: 13px;
+  margin: 8px 20px;
+  font-weight: bold;
+}
+
+.label:focus {
+  color: rgb(68, 90, 176);
+}

@@ -1,0 +1,27 @@
+.label {
+  position: absolute;
+  font-size: 13px;
+  margin: 32px 20px;
+  font-weight: bold;
+}
+
+.input {
+  width: 100%;
+  background-color: rgb(246, 247, 251);
+  border: none;
+  outline: none;
+  margin-top: 25px;
+  height: 120px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
+  border-bottom: 2px solid rgb(246, 247, 251);
+}
+
+.input::placeholder {
+  color: rgb(117, 117, 117);
+}
+
+.input:focus {
+  border-bottom: 2px solid rgb(68, 90, 176);
+}
