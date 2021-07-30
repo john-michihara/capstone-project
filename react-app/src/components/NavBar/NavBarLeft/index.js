@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import CreateDropdown from '../../CreateDropdown';
+import CreateDropdown from '../CreateDropdown';
 import styles from './NavBarLeft.module.css';
 
 const NavBarLeft = () => {

@@ -9,7 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Decks from './components/Decks';
 import Library from './components/Library';
-import CreateDeckForm from './components/CreateDeckFrom';
+import CreateDeckForm from './components/CreateDeckForm';
 import UpdateDeckForm from './components/UpdateDeckForm';
 import { authenticate } from './store/session';
 
@@ -51,7 +51,7 @@ function App() {
         <ProtectedRoute path='/library' exact={true} >
           <Library />
         </ProtectedRoute>
-        <ProtectedRoute path='/create' exact={true} >
+        <ProtectedRoute path='/create-deck' exact={true} >
           <CreateDeckForm />
         </ProtectedRoute>
         <ProtectedRoute path='/decks/:deckId' exact={true} >
