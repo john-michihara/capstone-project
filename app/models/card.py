@@ -27,5 +27,5 @@ class Card(db.Model):
             'deck_id': self.deck_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'deck': self.deck
+            # 'deck': self.deck
         }

@@ -37,16 +37,6 @@ export const getDeck = (id) => async (dispatch) => {
 
 export const createDeck = (formData, fields) => async (dispatch) => {
   const { title, description, viewable, creatorId } = formData;
-  // const fronts = fields.map(field => field.front)
-  // const backs = fields.map(field => field.back)
-
-  console.log({
-    title,
-    description,
-    viewable,
-    creatorId
-  })
-
   const response = await fetch('/api/decks', {
     method: 'POST',
     headers: {
@@ -57,13 +47,32 @@ export const createDeck = (formData, fields) => async (dispatch) => {
       description,
       viewable,
       creatorId,
-      cards: fields
     })
   });
 
   if (response.ok) {
     const data = await response.json();
+    const deckId = data.id
     dispatch(setDeck(data));
+    console.log(deckId)
+
+    await Promise.all(
+      fields.map(async field => {
+        const { front, back } = field;
+        const response = await fetch(`/api/decks/${parseInt(deckId)}/cards`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            front,
+            back,
+            deckId: deckId
+          })
+        });
+      })
+    )
+
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
