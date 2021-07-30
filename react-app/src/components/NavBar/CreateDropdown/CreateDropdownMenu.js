@@ -5,7 +5,7 @@ import styles from './CreateDropdown.module.css';
 const CreateDropdownMenu = () => {
   return (
     <div className={styles.menu}>
-      <Link className={styles.decks} to='/'>
+      <Link className={styles.decks} to='/create-deck' exact={true}>
         <span className={styles.deckIcon}>
           <i className="far fa-clone"></i>
         </span>
