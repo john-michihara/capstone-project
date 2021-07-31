@@ -27,7 +27,7 @@ class Deck(db.Model):
 
     creator = db.relationship('User', lazy='subquery',
                               back_populates='created_decks')
-    cards = db.relationship('Card', back_populates='deck')
+    cards = db.relationship('Card', lazy='subquery', back_populates='deck')
     user_decks = db.relationship(
         'UserDeck', back_populates='deck', cascade="delete, merge, save-update")
 
@@ -44,4 +44,5 @@ class Deck(db.Model):
             'creator': self.creator.to_dict(),
             'created_at': self.created_at,
             'updated_at': self.updated_at,
+            'cards': [card.to_dict() for card in self.cards]
         }
