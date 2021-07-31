@@ -66,8 +66,7 @@ export const createDeck = (formData, fields) => async (dispatch) => {
           },
           body: JSON.stringify({
             front,
-            back,
-            deckId: deckId
+            back
           })
         });
       })

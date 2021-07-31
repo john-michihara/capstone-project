@@ -58,7 +58,7 @@ def create_card(id):
         card = Card(
             front=form.data['front'],
             back=form.data['back'],
-            deck_id=form.data['deckId']
+            deck_id=id
         )
         print('$$$$$$$$$$$$$$$$$$$$$$$')
         print(request.data)
