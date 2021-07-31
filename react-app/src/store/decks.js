@@ -37,17 +37,7 @@ export const getDeck = (id) => async (dispatch) => {
 
 export const createDeck = (formData, fields) => async (dispatch) => {
   const { title, description, viewable, creatorId } = formData;
-  // const fronts = fields.map(field => field.front)
-  // const backs = fields.map(field => field.back)
-
-  console.log({
-    title,
-    description,
-    viewable,
-    creatorId
-  })
-
-  const response = await fetch('/api/decks', {
+  const deckResponse = await fetch('/api/decks', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -57,18 +47,43 @@ export const createDeck = (formData, fields) => async (dispatch) => {
       description,
       viewable,
       creatorId,
-      cards: fields
     })
   });
 
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(setDeck(data));
-    return null;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
+  if (deckResponse.ok) {
+    const deckData = await deckResponse.json();
+    const cardResponses = await Promise.all(
+      fields.map(async field => {
+        const { front, back } = field;
+        return await fetch(`/api/decks/${parseInt(deckData.id)}/cards`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            front,
+            back
+          })
+        });
+      })
+    )
+
+    if (cardResponses.ok) {
+      return null;
+    } else if (cardResponses.status < 500) {
+      const cardsData = await cardResponses.json();
+      if (cardsData.errors) {
+        return cardsData.errors;
+      }
+    } else {
+      return ['An error occurred. Please try again.'];
+    }
+
+
+  } else if (deckResponse.status < 500) {
+    const deckData = await deckResponse.json();
+    if (deckData.errors) {
+      return deckData.errors;
     }
   } else {
     return ['An error occurred. Please try again.'];

@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from datetime import datetime
 from app.models import db, Deck, UserDeck, Card
-from app.forms import CreateDeckForm, UpdateDeckForm
+from app.forms import CreateDeckForm, UpdateDeckForm, CreateCardForm
 
 
 deck_routes = Blueprint('decks', __name__)
@@ -45,11 +45,26 @@ def create_deck():
         )
         db.session.add(user_deck)
         db.session.commit()
-
-        print(request.data)
-
-        db.session.commit()
         return deck.to_dict()
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@deck_routes.route('/<int:id>/cards', methods=['POST'])
+def create_card(id):
+    form = CreateCardForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        card = Card(
+            front=form.data['front'],
+            back=form.data['back'],
+            deck_id=id
+        )
+        print('$$$$$$$$$$$$$$$$$$$$$$$')
+        print(request.data)
+        db.session.add(card)
+        db.session.commit()
+        return card.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
