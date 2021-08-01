@@ -91,7 +91,7 @@ export const createDeck = (formData, fields) => async (dispatch) => {
   }
 };
 
-export const updateDeck = (id, title, description, viewable, userId) => async (dispatch) => {
+export const updateDeck = (id, title, description, viewable, fields, userId) => async (dispatch) => {
   const response = await fetch(`/api/decks/${id}`, {
     method: 'PUT',
     headers: {
@@ -101,9 +101,33 @@ export const updateDeck = (id, title, description, viewable, userId) => async (d
       title,
       description,
       viewable,
+      fields,
       userId
     })
   });
+
+  await fetch(`/api/decks/${id}/cards`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+
+  await Promise.all(
+    fields.map(async field => {
+      const { front, back } = field;
+      return await fetch(`/api/decks/${parseInt(id)}/cards`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          front,
+          back
+        })
+      });
+    })
+  );
 
   if (response.ok) {
     const data = await response.json();

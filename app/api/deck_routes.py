@@ -60,8 +60,6 @@ def create_card(id):
             back=form.data['back'],
             deck_id=id
         )
-        print('$$$$$$$$$$$$$$$$$$$$$$$')
-        print(request.data)
         db.session.add(card)
         db.session.commit()
         return card.to_dict()
@@ -97,6 +95,15 @@ def update_deck(id):
         db.session.commit()
         return deck.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@deck_routes.route('/<int:id>/cards', methods=['DELETE'])
+def delete_cards_in_deck(id):
+    cards = Card.query.filter(Card.deck_id == id).all()
+    for card in cards:
+        db.session.delete(card)
+    db.session.commit()
+    return {'cards': [card.to_dict() for card in cards]}
 
 
 @deck_routes.route('/<int:id>', methods=['DELETE'])
