@@ -13,7 +13,7 @@ const UpdateDeckForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { deckId } = useParams();
-  const deck = useSelector(state => state.decks[deckId]);
+  let deck = useSelector(state => state.decks[deckId]);
   const user = useSelector(state => state.session.user);
   const userId = parseInt(user.id);
 
@@ -40,9 +40,11 @@ const UpdateDeckForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await dispatch(updateDeck(deckId, title, description, viewable, userId));
+    const data = await dispatch(updateDeck(deckId, title, description, viewable, fields, userId));
     if (data) {
       setErrors(data);
+    } else {
+      await dispatch(getDeck(parseInt(deckId)));
     }
   };
 

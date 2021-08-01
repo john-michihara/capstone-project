@@ -31,9 +31,9 @@ const CreateDeckForm = () => {
     const data = await dispatch(createDeck(formData, fields));
     if (data.errors) {
       setErrors(data.errors);
+    } else {
+      history.push(`/decks/${data.id}`);
     }
-
-    history.push(`/decks/${data.id}`);
   };
 
   return (
