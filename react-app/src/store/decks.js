@@ -66,19 +66,20 @@ export const createDeck = (formData, fields) => async (dispatch) => {
           })
         });
       })
-    )
+    );
 
-    if (cardResponses.ok) {
-      return null;
-    } else if (cardResponses.status < 500) {
-      const cardsData = await cardResponses.json();
-      if (cardsData.errors) {
-        return cardsData.errors;
-      }
-    } else {
-      return ['An error occurred. Please try again.'];
-    }
+    return deckData;
 
+    // if (cardResponses.ok) {
+    //   return null;
+    // } else if (cardResponses.status < 500) {
+    //   const cardsData = await cardResponses.json();
+    //   if (cardsData.errors) {
+    //     return cardsData.errors;
+    //   }
+    // } else {
+    //   return ['An error occurred. Please try again.'];
+    // }
 
   } else if (deckResponse.status < 500) {
     const deckData = await deckResponse.json();

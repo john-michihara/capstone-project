@@ -11,6 +11,7 @@ import Decks from './components/Decks';
 import Profile from './components/Profile';
 import CreateDeckForm from './components/CreateDeckForm';
 import UpdateDeckForm from './components/UpdateDeckForm';
+import Deck from './components/Deck';
 import { authenticate } from './store/session';
 
 function App() {
@@ -54,8 +55,11 @@ function App() {
         <ProtectedRoute path='/create-deck' exact={true} >
           <CreateDeckForm />
         </ProtectedRoute>
-        <ProtectedRoute path='/decks/:deckId' exact={true} >
+        <ProtectedRoute path='/decks/:deckId/edit' exact={true} >
           <UpdateDeckForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/decks/:deckId' exact={true} >
+          <Deck />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
