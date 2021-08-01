@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { createDeck } from '../../store/decks';
 import CreateDeckTitle from './CreateDeckTitle.js';
@@ -7,6 +8,7 @@ import styles from './CreateDeckForm.module.css';
 
 const CreateDeckForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [highlight, setHighlight] = useState(false)
   const [errors, setErrors] = useState([]);
   const [title, setTitle] = useState('');
@@ -26,11 +28,12 @@ const CreateDeckForm = () => {
       creatorId: user.id
     };
 
-    console.log(fields)
     const data = await dispatch(createDeck(formData, fields));
-    if (data) {
-      setErrors(data);
+    if (data.errors) {
+      setErrors(data.errors);
     }
+
+    history.push(`/decks/${data.id}`);
   };
 
   const editCard = (e, idx, key) => {
