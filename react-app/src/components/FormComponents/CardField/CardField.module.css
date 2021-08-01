@@ -1,0 +1,60 @@
+.cardContainer {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  margin-top: 20px;
+  border-radius: 4px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px;
+  font-size: 16px;
+  border-bottom: 2px solid rgb(247, 247, 247);
+}
+
+.cardNumber {
+  color: rgb(148, 156, 179);
+  font-weight: bold;
+}
+
+.contentContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 12px 24px 12px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 16px;
+  margin: 0 20px;
+}
+
+.input {
+  border: none;
+  color: rgb(48, 53, 69);
+  font-size: 18px;
+  border-bottom: 3px solid rgb(48, 53, 69);
+  padding-bottom: 7px;
+  outline: none;
+  font-weight: lighter;
+}
+
+.input::placeholder {
+  font-weight: lighter;
+  color: rgb(148, 156, 179);
+}
+
+.input:focus {
+  border-bottom: 5px solid rgb(254, 204, 57);
+  padding-bottom: 5px;
+}
+
+.label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: rgb(148, 156, 179);
+  margin-top: 10px;
+}

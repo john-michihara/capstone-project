@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import styles from './CreateDeckTitle.module.css';
+import styles from './DeckDescription.module.css';
 
-const CreateDeckTitle = ({ title, setTitle }) => {
+const DeckDescription = ({ description, setDescription }) => {
   const [highlight, setHighlight] = useState(false);
 
   return (
     <div>
-      {title.length > 0 &&
+      {description.length > 0 &&
         <label
           className={styles.label}
           style={
@@ -14,25 +14,24 @@ const CreateDeckTitle = ({ title, setTitle }) => {
               { color: 'rgb(68, 90, 176)' } :
               { color: 'rgb(148, 156, 179)' }
           }
-        >Title</label>
+        >Description</label>
       }
-      <input
+      <textarea
         className={styles.input}
-        type='text'
-        name='title'
-        value={title}
-        placeholder='Enter a title, like "Biology - Chapter 22: Evolution'
+        name='description'
+        value={description}
+        placeholder='Add a description...'
         style={
-          title.length > 0 ?
-            { padding: '30px 0 10px 20px' } :
+          description.length > 0 ?
+            { padding: '28px 0 10px 20px' } :
             { padding: '20px 0 20px 20px' }
         }
-        onChange={e => setTitle(e.target.value)}
+        onChange={e => setDescription(e.target.value)}
         onFocus={() => setHighlight(true)}
         onBlur={() => setHighlight(false)}
-      ></input>
+      ></textarea>
     </div>
   );
 };
 
-export default CreateDeckTitle;
+export default DeckDescription;
