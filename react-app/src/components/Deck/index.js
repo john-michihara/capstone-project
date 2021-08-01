@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDeck } from '../../store/decks';
 import StudyControls from './StudyControls';
-import styles from './Deck.module.css';
+import DeckTerms from './DeckTerms';
 
 const Deck = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,10 @@ const Deck = () => {
   }, [dispatch]);
 
   return (
-    <StudyControls deck={deck} />
+    <>
+      <StudyControls deck={deck} />
+      <DeckTerms deck={deck} />
+    </>
   );
 };
 
