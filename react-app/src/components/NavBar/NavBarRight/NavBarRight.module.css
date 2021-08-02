@@ -27,3 +27,33 @@
 .input::placeholder {
   color: rgb(148, 156, 179);
 }
+
+.login {
+  cursor: pointer;
+  background-color: inherit;
+  color: rgb(207, 219, 242);
+  padding: 9px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+}
+
+.login:hover {
+  color: rgb(255, 255, 255);
+}
+
+.signup {
+  cursor: pointer;
+  background-color: rgb(255, 220, 98);
+  color: rgb(66, 87, 178);
+  padding: 9px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  margin-left: 15px;
+}
+
+.signup:hover {
+  background-color: rgb(219, 190, 84);
+}

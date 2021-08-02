@@ -34,7 +34,7 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/splash' exact={true}>
+        <Route path='/' exact={true}>
           <Splash />
         </Route>
         <Route path='/login' exact={true}>
@@ -49,7 +49,7 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <ProtectedRoute path='/home' exact={true} >
           <h1>My Home Page</h1>
           <Decks />
         </ProtectedRoute>

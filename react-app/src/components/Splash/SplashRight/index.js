@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import styles from './SplashRight.module.css';
 
 const images = [
@@ -20,6 +22,11 @@ const messages = [
 ];
 
 const SplashRight = () => {
+  const history = useHistory();
+  const user = useSelector(state => state.session.user);
+
+  if (user) history.push('/home');
+
   const [slide, setSlide] = useState(0);
 
   const showNextSlide = () => {
