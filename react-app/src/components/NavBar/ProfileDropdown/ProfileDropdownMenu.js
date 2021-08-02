@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import LogoutButton from '../../auth/LogoutButton';
+import LogoutButton from '../../Authentication/LogoutButton';
 import styles from './ProfileDropdown.module.css';
 
 const ProfileDropdownMenu = () => {

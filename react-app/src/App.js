@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
+import LoginForm from './components/Authentication/LoginForm';
+import SignUpForm from './components/Authentication/SignUpForm';
 import NavBar from './components/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
+import ProtectedRoute from './components/Authentication/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Decks from './components/Decks';
