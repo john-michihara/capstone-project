@@ -45,11 +45,8 @@ const LoginForm = () => {
       </div>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={onLogin}>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
+          <h1 className={styles.title}>Log in</h1>
+          {errors.length > 0 && (<div className={styles.error}>Incorrect log in credentials</div>)}
           <div className={styles.field}>
             <label className={styles.label} htmlFor='email'>EMAIL</label>
             <input
@@ -59,6 +56,7 @@ const LoginForm = () => {
               placeholder='Email'
               value={email}
               onChange={updateEmail}
+              style={errors.length > 0 ? { border: '1px solid rgb(253, 115, 96)' } : { border: null }}
             />
           </div>
           <div className={styles.field}>
@@ -70,6 +68,7 @@ const LoginForm = () => {
               placeholder='Password'
               value={password}
               onChange={updatePassword}
+              style={errors.length > 0 ? { border: '1px solid rgb(253, 115, 96)' } : { border: null }}
             />
             <div className={styles.buttonsContainer}>
               <button className={styles.login} type='submit'>Log in</button>
@@ -84,7 +83,7 @@ const LoginForm = () => {
           </div>
         </form>
       </div>
-    </div>
+    </div >
   );
 };
 
