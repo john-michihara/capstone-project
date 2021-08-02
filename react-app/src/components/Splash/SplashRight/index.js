@@ -4,9 +4,9 @@ import { useSelector } from 'react-redux';
 import styles from './SplashRight.module.css';
 
 const images = [
-  'splash1.svg',
-  'splash2.svg',
-  'splash3.svg'
+  '/images/splash1.svg',
+  '/images/splash2.svg',
+  '/images/splash3.svg'
 ]
 
 const backgroundColors = [
