@@ -18,8 +18,29 @@
   border-bottom: 2px solid rgb(246, 247, 251);
 }
 
+.error {
+  position: absolute;
+  font-size: 13px;
+  margin: 32px 20px;
+  font-weight: bold;
+  color: rgb(253, 115, 96);
+}
+
+.errorInput {
+  width: 100%;
+  background-color: rgb(246, 247, 251);
+  border: none;
+  outline: none;
+  margin-top: 25px;
+  height: 120px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
+  border-bottom: 2px solid rgb(253, 115, 96);
+}
+
 .input::placeholder {
-  color: rgb(117, 117, 117);
+  color: rgb(184, 193, 221);
 }
 
 .input:focus {

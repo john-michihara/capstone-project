@@ -14,6 +14,22 @@
   border-bottom: 2px solid rgb(68, 90, 176);
 }
 
+.input::placeholder {
+  color: rgb(184, 193, 221);
+}
+
+.errorInput {
+  width: 100%;
+  background-color: rgb(246, 247, 251);
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 30px 0 10px 20px;
+  border-bottom: 2px solid rgb(253, 115, 96);
+  font-weight: bold;
+  border-radius: 2px;
+}
+
 .label {
   position: absolute;
   font-size: 13px;
@@ -23,4 +39,12 @@
 
 .label:focus {
   color: rgb(68, 90, 176);
+}
+
+.error {
+  position: absolute;
+  font-size: 13px;
+  margin: 8px 20px;
+  font-weight: bold;
+  color: rgb(253, 115, 96);
 }
