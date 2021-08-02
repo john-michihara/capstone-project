@@ -1,0 +1,59 @@
+.background {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.image {
+  width: 100%;
+}
+
+.messages {
+  background-color: rgb(68, 90, 176);
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  letter-spacing: 2px;
+  margin-top: 0;
+}
+
+.message {
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: lighter;
+}
+
+.progressBar {
+  height: 10px;
+  width: 100%;
+}
+
+.fill {
+  animation: fill 5s linear infinite;
+  height: 100%;
+  background-color: rgb(255, 205, 31);
+}
+
+@keyframes fill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

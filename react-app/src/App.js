@@ -12,6 +12,7 @@ import Profile from './components/Profile';
 import CreateDeckForm from './components/CreateDeckForm';
 import UpdateDeckForm from './components/UpdateDeckForm';
 import Deck from './components/Deck';
+import Splash from './components/Splash';
 import { authenticate } from './store/session';
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
+        <Route path='/' exact={true}>
+          <Splash />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -45,7 +49,7 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
+        <ProtectedRoute path='/home' exact={true} >
           <h1>My Home Page</h1>
           <Decks />
         </ProtectedRoute>
