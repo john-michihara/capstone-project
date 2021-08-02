@@ -15,12 +15,9 @@ const DeckForm = ({ header, button, title, setTitle, description, setDescription
       </div>
       <div className={styles.container}>
         <div>
-          {errors.map((error, idx) => (
-            <div key={idx}>{error}</div>
-          ))}
         </div>
-        <CreateDeckTitle title={title} setTitle={setTitle} />
-        <CreateDeckDescription description={description} setDescription={setDescription} />
+        <CreateDeckTitle title={title} setTitle={setTitle} errors={errors.title} />
+        <CreateDeckDescription description={description} setDescription={setDescription} errors={errors.description} />
         <CreateViewable viewable={viewable} setViewable={setViewable} />
       </div>
     </>

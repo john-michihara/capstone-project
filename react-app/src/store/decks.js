@@ -83,8 +83,8 @@ export const createDeck = (formData, fields) => async (dispatch) => {
 
   } else if (deckResponse.status < 500) {
     const deckData = await deckResponse.json();
-    if (deckData.errors) {
-      return deckData.errors;
+    if (deckData) {
+      return deckData;
     }
   } else {
     return ['An error occurred. Please try again.'];
