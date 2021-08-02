@@ -17,11 +17,21 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    const errorsObj = {};
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
-        setErrors(data)
+
+        data.forEach(error => {
+          const [field, message] = error.split(' : ');
+          errorsObj[field] = message;
+        });
+
+        setErrors(errorsObj);
       }
+    } else {
+      errorsObj['repeat_password'] = 'Repeated password must match password'
+      setErrors(errorsObj);
     }
   };
 
@@ -58,13 +68,16 @@ const SignUpForm = () => {
       </div>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={onSignUp}>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
           <div className={styles.field}>
-            <label className={styles.label}>USERNAME</label>
+            {!errors.username ?
+              (<label className={styles.label}>Username</label>) :
+              (
+                <>
+                  <div className={styles.error}>{errors.server}</div>
+                  <div className={styles.error}>{errors.username}</div>
+                </>
+              )
+            }
             <input
               className={styles.input}
               type='text'
@@ -72,10 +85,14 @@ const SignUpForm = () => {
               onChange={updateUsername}
               value={username}
               placeholder='john123'
+              style={errors.username ? { border: '1px solid rgb(253, 115, 96)' } : { border: null }}
             ></input>
           </div>
           <div className={styles.field}>
-            <label className={styles.label}>EMAIL</label>
+            {!errors.email ?
+              (<label className={styles.label}>Email</label>) :
+              (<div className={styles.error}>{errors.email}</div>)
+            }
             <input
               className={styles.input}
               type='text'
@@ -83,10 +100,14 @@ const SignUpForm = () => {
               onChange={updateEmail}
               value={email}
               placeholder='user@mail.com'
+              style={errors.email ? { border: '1px solid rgb(253, 115, 96)' } : { border: null }}
             ></input>
           </div>
           <div className={styles.field}>
-            <label className={styles.label}>PASSWORD</label>
+            {!errors.password ?
+              (<label className={styles.label}>Password</label>) :
+              (<div className={styles.error}>{errors.password}</div>)
+            }
             <input
               className={styles.input}
               type='password'
@@ -94,10 +115,14 @@ const SignUpForm = () => {
               onChange={updatePassword}
               value={password}
               placeholder='⬤⬤⬤⬤⬤⬤⬤'
+              style={errors.password ? { border: '1px solid rgb(253, 115, 96)' } : { border: null }}
             ></input>
           </div>
           <div className={styles.field}>
-            <label className={styles.label}>REPEAT PASSWORD</label>
+            {!errors.repeat_password ?
+              (<label className={styles.label}>Repeat Password</label>) :
+              (<div className={styles.error}>{errors.repeat_password}</div>)
+            }
             <input
               className={styles.input}
               type='password'
@@ -106,6 +131,7 @@ const SignUpForm = () => {
               value={repeatPassword}
               required={true}
               placeholder='⬤⬤⬤⬤⬤⬤⬤'
+              style={errors.repeat_password ? { border: '1px solid rgb(253, 115, 96)' } : { border: null }}
             ></input>
           </div>
           <div className={styles.buttonsContainer}>
