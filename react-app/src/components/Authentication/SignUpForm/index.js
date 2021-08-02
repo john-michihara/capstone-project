@@ -68,6 +68,7 @@ const SignUpForm = () => {
       </div>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={onSignUp}>
+          <h1 className={styles.title}>Sign up</h1>
           <div className={styles.field}>
             {!errors.username ?
               (<label className={styles.label}>Username</label>) :
