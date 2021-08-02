@@ -36,8 +36,8 @@ const CreateDeckForm = () => {
         const [field, message] = error.split(' : ');
         errorsObj[field] = message;
       });
-
       setErrors(errorsObj);
+
     } else {
       history.push(`/decks/${data.id}`);
     }

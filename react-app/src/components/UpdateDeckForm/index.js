@@ -42,7 +42,13 @@ const UpdateDeckForm = () => {
     e.preventDefault();
     const data = await dispatch(updateDeck(deckId, title, description, viewable, fields, userId));
     if (data) {
-      setErrors(data);
+      const errorsObj = {};
+      data.forEach(error => {
+        const [field, message] = error.split(' : ');
+        errorsObj[field] = message;
+      });
+      setErrors(errorsObj);
+
     } else {
       await dispatch(getDeck(parseInt(deckId)));
     }
