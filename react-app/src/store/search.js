@@ -17,17 +17,18 @@ export const getDecksBySearch = (searchQuery) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const data = await response.json();
-    dispatch(setDecks(data));
+    const { filtered_decks } = await response.json();
+    dispatch(setDecks(filtered_decks));
     return null;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data) {
-      return data;
-    }
-  } else {
-    return ['An error occurred. Please try again.']
   }
+  // } else if (response.status < 500) {
+  //   const data = await response.json();
+  //   if (data) {
+  //     return data;
+  //   }
+  // } else {
+  //   return ['An error occurred. Please try again.']
+  // }
 };
 
 export default function reducer(state = initialState, action) {

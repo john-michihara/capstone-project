@@ -1,4 +1,5 @@
 from flask import Blueprint, request
+from sqlalchemy import or_
 from app.models import db, Deck
 from app.forms import SearchForm
 
@@ -17,13 +18,16 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 
-@search_routes.route('', method=['POST'])
+@search_routes.route('', methods=['POST'])
 def filter_decks():
     form = SearchForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     search_query = form.data['searchQuery']
     if form.validate_on_submit():
         filtered_decks = Deck.query.filter(
-            Deck.title.like('%' + search_query + '%')).all()
+            or_(
+                Deck.title.ilike('%' + search_query + '%'),
+                Deck.description.ilike('%' + search_query + '%'))
+        ).filter(Deck.public == True).all()
         return {'filtered_decks': [deck.to_dict() for deck in filtered_decks]}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
