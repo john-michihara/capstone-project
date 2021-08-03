@@ -11,7 +11,6 @@ export const getUserDecks = (userId) => async (dispatch) => {
   const response = await fetch(`/api/users/${userId}/decks`);
   if (response.ok) {
     const { decks } = await response.json();
-    console.log(decks)
     dispatch(setUserDecks(decks))
   }
 };

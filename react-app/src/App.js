@@ -7,7 +7,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/Authentication/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import Decks from './components/Decks';
+import Home from './components/Home';
 import Profile from './components/Profile';
 import CreateDeckForm from './components/CreateDeckForm';
 import UpdateDeckForm from './components/UpdateDeckForm';
@@ -50,8 +50,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/home' exact={true} >
-          <h1>My Home Page</h1>
-          <Decks />
+          <Home />
         </ProtectedRoute>
         <ProtectedRoute path='/profile/:username' exact={true} >
           <Profile />
