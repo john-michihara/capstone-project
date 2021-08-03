@@ -13,6 +13,7 @@ import CreateDeckForm from './components/CreateDeckForm';
 import UpdateDeckForm from './components/UpdateDeckForm';
 import Deck from './components/Deck';
 import Splash from './components/Splash';
+import Search from './components/Search';
 import { authenticate } from './store/session';
 
 function App() {
@@ -63,6 +64,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/decks/:deckId' exact={true} >
           <Deck />
+        </ProtectedRoute>
+        <ProtectedRoute path='/search' exact={true}>
+          <Search />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
