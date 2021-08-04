@@ -41,7 +41,7 @@ const LoginForm = () => {
   return (
     <div className={styles.container}>
       <div className={styles.leftContainer}>
-        <img src='/images/login.svg' />
+        <img src='login.svg' />
       </div>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={onLogin}>

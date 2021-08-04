@@ -64,7 +64,7 @@ const SignUpForm = () => {
   return (
     <div className={styles.container}>
       <div className={styles.leftContainer}>
-        <img src='/images/signup.svg' />
+        <img src='signup.svg' />
       </div>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={onSignUp}>

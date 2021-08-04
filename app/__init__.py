@@ -75,4 +75,12 @@ def react_root(path):
         return app.send_static_file('favicon.ico')
     if path == 'splash1.svg':
         return app.send_static_file('splash1.svg')
+    if path == 'splash2.svg':
+        return app.send_static_file('splash2.svg')
+    if path == 'splash3.svg':
+        return app.send_static_file('splash3.svg')
+    if path == 'signup.svg':
+        return app.send_static_file('signup.svg')
+    if path == 'login.svg':
+        return app.send_static_file('login.svg')
     return app.send_static_file('index.html')

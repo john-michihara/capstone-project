@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styles from './SplashRight.module.css';
-// import * as test from '../../../../public/splash1.svg';
 
 const images = [
-  '/images/splash1.svg',
-  '/images/splash2.svg',
-  '/images/splash3.svg'
+  'splash1.svg',
+  'splash2.svg',
+  'splash3.svg'
 ]
 
 const backgroundColors = [
@@ -47,13 +46,7 @@ const SplashRight = () => {
 
   return (
     <div className={styles.background} style={backgroundColors[slide]}>
-      <img className={styles.image} src='splash1.svg' />
-      <img className={styles.image} src='/splash1.svg' />
-      <img className={styles.image} src='./splash1.svg' />
-      <img className={styles.image} src='images/splash2.svg' />
-      <img className={styles.image} src='/images/splash2.svg' />
-      <img className={styles.image} src='./images/splash2.svg' />
-
+      <img className={styles.image} src={images[slide]} />
       <div className={styles.messages}>
         <div className={styles.progressBar}>
           <div className={styles.fill}></div>
@@ -67,7 +60,5 @@ const SplashRight = () => {
     </div>
   );
 };
-
-// images[slide]
 
 export default SplashRight;
