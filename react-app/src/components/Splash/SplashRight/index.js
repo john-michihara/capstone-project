@@ -46,7 +46,7 @@ const SplashRight = () => {
 
   return (
     <div className={styles.background} style={backgroundColors[slide]}>
-      <img className={styles.image} src={images[slide]} />
+      <img className={styles.image} src='/images/splash1.svg' />
       <div className={styles.messages}>
         <div className={styles.progressBar}>
           <div className={styles.fill}></div>
@@ -60,5 +60,7 @@ const SplashRight = () => {
     </div>
   );
 };
+
+// images[slide]
 
 export default SplashRight;
