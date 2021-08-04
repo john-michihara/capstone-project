@@ -46,7 +46,12 @@ const SplashRight = () => {
 
   return (
     <div className={styles.background} style={backgroundColors[slide]}>
-      <img className={styles.image} src='../../../../public/images/splash1.svg' />
+      <img className={styles.image} src='splash1.svg' />
+      <img className={styles.image} src='/splash1.svg' />
+      <img className={styles.image} src='public/splash1.svg' />
+      <img className={styles.image} src='/public/splash1.svg' />
+      <img className={styles.image} src='react-app/public/splash1.svg' />
+      <img className={styles.image} src='/react-app/public/splash1.svg' />
       <div className={styles.messages}>
         <div className={styles.progressBar}>
           <div className={styles.fill}></div>
