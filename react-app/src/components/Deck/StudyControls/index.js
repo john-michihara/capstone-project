@@ -1,23 +1,10 @@
 import React, { useState } from 'react';
+import CardsDisplay from '../CardsDisplay';
 import styles from './StudyControls.module.css';
 
 const StudyControls = ({ deck }) => {
   const [page, setPage] = useState(1);
   const [showBack, setShowBack] = useState(false);
-
-  const handleLeftClick = () => {
-    if (page > 1) {
-      setPage(page - 1);
-      setShowBack(false);
-    }
-  };
-
-  const handleRightClick = () => {
-    if (page < deck?.cards.length) {
-      setPage(page + 1);
-      setShowBack(false);
-    }
-  };
 
   return (
     <div className={styles.background}>
@@ -49,38 +36,13 @@ const StudyControls = ({ deck }) => {
                 <span>Test</span>
               </div>
             </div>
-            <div className={styles.display}>
-              <div
-                className={styles.card}
-                onClick={() => setShowBack(!showBack)}
-              >
-                {showBack ?
-                  (<div>{deck?.cards[page - 1].back}</div>) :
-                  (<div>{deck?.cards[page - 1].front}</div>)
-                }
-              </div>
-              <div className={styles.pageButtons}>
-                <span
-                  className={page === 1 ?
-                    styles.disabled :
-                    styles.pageButton
-                  }
-                  onClick={handleLeftClick}
-                >
-                  <i className="fas fa-arrow-left" />
-                </span>
-                <span className={styles.pages}>{page}/{deck?.cards.length}</span>
-                <span
-                  className={page === deck?.cards.length ?
-                    styles.disabled :
-                    styles.pageButton
-                  }
-                  onClick={handleRightClick}
-                >
-                  <i className="fas fa-arrow-right" />
-                </span>
-              </div>
-            </div>
+            <CardsDisplay
+              deck={deck}
+              showBack={showBack}
+              setShowBack={setShowBack}
+              page={page}
+              setPage={setPage}
+            />
           </div>
         </div>
       </div >
