@@ -4,12 +4,14 @@ import session from './session';
 import decks from './decks';
 import createdDecks from './createdDecks';
 import userDecks from './userDecks';
+import search from './search';
 
 const rootReducer = combineReducers({
   session,
   decks,
   createdDecks,
-  userDecks
+  userDecks,
+  search
 });
 
 
