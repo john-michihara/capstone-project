@@ -65,7 +65,7 @@ function App() {
         <ProtectedRoute path='/decks/:deckId' exact={true} >
           <Deck />
         </ProtectedRoute>
-        <ProtectedRoute path='/search' exact={true}>
+        <ProtectedRoute path='/search/:keyword' exact={true}>
           <Search />
         </ProtectedRoute>
       </Switch>

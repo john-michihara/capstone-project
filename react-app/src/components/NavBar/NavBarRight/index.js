@@ -1,19 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileDropdown from '../ProfileDropdown';
 import styles from './NavBarRight.module.css';
 
 const NavBarRight = () => {
+  const history = useHistory();
   const user = useSelector(state => state.session.user);
+  const [keyword, setKeyword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push(`/search/${keyword}`)
+  };
 
   return (
     <div className={styles.container}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <span className={styles.icon}>
           <i className="fas fa-search"></i>
         </span>
-        <input className={styles.input} type='text' placeholder='Search' />
+        <input
+          className={styles.input}
+          name='keyword'
+          type='text'
+          placeholder='Search'
+          value={keyword}
+          onChange={e => setKeyword(e.target.value)}
+        />
       </form>
       {user ?
         (<ProfileDropdown />) :

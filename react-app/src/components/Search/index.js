@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDecksBySearch } from '../../store/search';
 import SearchForm from './SearchForm';
@@ -8,26 +8,35 @@ import styles from './Search.module.css';
 
 const Search = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { keyword } = useParams();
+
   const decks = useSelector(state => Object.values(state.search));
   const decksById = useSelector(state => state.search);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [numResults, setNumResults] = useState(1);
   const [selected, setSelected] = useState('')
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    await dispatch(getDecksBySearch(searchQuery));
+    history.push(`/search/${searchQuery}`)
     setNumResults(1);
     setSelected('');
-  };
+  }
 
   const handleViewMore = () => {
     setNumResults(prev => prev + 1);
   };
 
   useEffect(() => {
-    if (!selected) setSelected(decks[0]?.id);
-  }, [decks]);
+    setSearchQuery(keyword);
+    dispatch(getDecksBySearch(keyword));
+  }, [dispatch, keyword]);
+
+  useEffect(() => {
+    setSelected(decks[0]?.id);
+  }, [decksById]);
 
   return (
     <>
