@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styles from './SplashRight.module.css';
+// import * as test from '../../../../public/splash1.svg';
 
 const images = [
   '/images/splash1.svg',
@@ -48,10 +49,11 @@ const SplashRight = () => {
     <div className={styles.background} style={backgroundColors[slide]}>
       <img className={styles.image} src='splash1.svg' />
       <img className={styles.image} src='/splash1.svg' />
-      <img className={styles.image} src='public/splash1.svg' />
-      <img className={styles.image} src='/public/splash1.svg' />
-      <img className={styles.image} src='react-app/public/splash1.svg' />
-      <img className={styles.image} src='/react-app/public/splash1.svg' />
+      <img className={styles.image} src='./splash1.svg' />
+      <img className={styles.image} src='images/splash2.svg' />
+      <img className={styles.image} src='/images/splash2.svg' />
+      <img className={styles.image} src='./images/splash2.svg' />
+
       <div className={styles.messages}>
         <div className={styles.progressBar}>
           <div className={styles.fill}></div>
