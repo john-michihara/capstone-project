@@ -8,6 +8,7 @@ const NavBarRight = () => {
   const history = useHistory();
   const user = useSelector(state => state.session.user);
   const [keyword, setKeyword] = useState('');
+  const [focus, setFocus] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,8 +17,11 @@ const NavBarRight = () => {
 
   return (
     <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <span className={styles.icon}>
+      <form
+        className={focus ? styles.focusForm : styles.form}
+        onSubmit={handleSubmit}
+      >
+        <span className={focus ? styles.focusIcon : styles.icon}>
           <i className="fas fa-search"></i>
         </span>
         <input
@@ -27,6 +31,9 @@ const NavBarRight = () => {
           placeholder='Search'
           value={keyword}
           onChange={e => setKeyword(e.target.value)}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
+          required={true}
         />
       </form>
       {user ?

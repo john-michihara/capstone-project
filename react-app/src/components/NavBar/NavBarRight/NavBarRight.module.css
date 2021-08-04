@@ -12,8 +12,22 @@
   margin-right: 16px;
 }
 
+.focusForm {
+  background-color: rgb(255, 255, 255);
+  padding: 5px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
 .icon {
   color: rgb(206, 218, 243);
+  margin-right: 8px;
+}
+
+.focusIcon {
+  color: rgb(101, 112, 143);
   margin-right: 8px;
 }
 
