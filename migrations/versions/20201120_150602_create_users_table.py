@@ -26,6 +26,7 @@ def upgrade():
                     sa.Column('email', sa.String(length=255), nullable=False),
                     sa.Column('hashed_password', sa.String(
                         length=255), nullable=False),
+                    sa.Column('profile_url', sa.String()),
                     sa.PrimaryKeyConstraint('id'),
                     sa.UniqueConstraint('email'),
                     sa.UniqueConstraint('username')
@@ -43,13 +44,6 @@ def upgrade():
                     sa.ForeignKeyConstraint(['creator_id'], ['users.id'])
                     )
 
-    # op.create_table('user_decks',
-    #                 sa.Column('deck_id', sa.Integer(), nullable=False),
-    #                 sa.Column('user_id', sa.Integer(), nullable=False),
-    #                 sa.PrimaryKeyConstraint('deck_id', 'user_id'),
-    #                 sa.ForeignKeyConstraint(['deck_id'], ['decks.id']),
-    #                 sa.ForeignKeyConstraint(['user_id'], ['users.id'])
-    #                 )
 
     op.create_table('user_decks',
                     sa.Column('deck_id', sa.Integer(), nullable=False),
@@ -59,7 +53,7 @@ def upgrade():
                     sa.PrimaryKeyConstraint('deck_id', 'user_id'),
                     sa.ForeignKeyConstraint(['deck_id'], ['decks.id']),
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'])
-    )
+                    )
 
     op.create_table('cards',
                     sa.Column('id', sa.Integer(), nullable=False),
@@ -81,4 +75,5 @@ def downgrade():
     op.drop_table('users')
     op.drop_table('decks')
     op.drop_table('cards')
+    op.drop_table('user_decks')
     # ### end Alembic commands ###
