@@ -13,7 +13,7 @@ const StudyControls = ({ deck }) => {
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.session.user);
-  const userDecks = useSelector(state => Object.values(state.userDecks));
+  const userDecks = useSelector(state => state.userDecks);
 
   const [page, setPage] = useState(1);
   const [showBack, setShowBack] = useState(false);
@@ -23,10 +23,6 @@ const StudyControls = ({ deck }) => {
       await dispatch(getUserDecks(user?.id))
     })();
   }, [dispatch]);
-
-  useEffect(() => {
-
-  }, [userDecks]);
 
   const handleAdd = async () => {
     if (user.id === deck?.creator_id) return;
@@ -87,27 +83,32 @@ const StudyControls = ({ deck }) => {
               <div className={styles.marginContainer}>
                 <div className={styles.buttonsHeader}>DECK SETTINGS</div>
 
-                <button
-                  className={styles.button}
-                  onClick={handleAdd}
-                  disabled={user.id === deck?.creator_id}
-                >
-                  <span className={styles.buttonIcon}>
-                    <i className="fas fa-plus-circle" />
-                  </span>
-                  <span>Add to Library</span>
-                </button>
+                {user.id !== deck?.creator_id && (userDecks[deck?.id] ?
+                  (<button
+                    className={styles.button}
+                    onClick={handleRemove}
+                    disabled={user.id === deck?.creator_id}
+                  >
+                    <span className={styles.buttonIcon}>
+                      <i className="fas fa-plus-circle" />
+                    </span>
+                    <span>Remove from Library</span>
+                  </button>)
+                  :
+                  (<button
+                    className={styles.button}
+                    onClick={handleAdd}
+                    disabled={user.id === deck?.creator_id}
+                  >
+                    <span className={styles.buttonIcon}>
+                      <i className="fas fa-plus-circle" />
+                    </span>
+                    <span>Add to Library</span>
+                  </button>))
+                }
 
-                <button
-                  className={styles.button}
-                  onClick={handleRemove}
-                  disabled={user.id === deck?.creator_id}
-                >
-                  <span className={styles.buttonIcon}>
-                    <i className="fas fa-plus-circle" />
-                  </span>
-                  <span>Remove from Library</span>
-                </button>
+
+
 
                 <button
                   className={styles.button}
