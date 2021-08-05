@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import styles from './DeckTerms.module.css';
 
 const DeckTerms = ({ deck }) => {
+  const user = useSelector(state => state.session.user);
+
   return (
     <div className={styles.container}>
       <div className={styles.offset}>
@@ -24,11 +27,15 @@ const DeckTerms = ({ deck }) => {
           </div>
           <div className={styles.buttonContainer}>
             <Link
-              className={styles.button}
               to={`/decks/${deck?.id}/edit`}
               exact={true}
             >
-              Add or Remove Terms
+              <button
+                className={styles.button}
+                disabled={user.id !== deck?.creator_id}
+              >
+                Add or Remove Terms
+              </button>
             </Link>
           </div>
         </div>

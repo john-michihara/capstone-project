@@ -106,10 +106,7 @@ const StudyControls = ({ deck }) => {
                     <span>Add to Library</span>
                   </button>))
                 }
-
-
-
-
+                
                 <button
                   className={styles.button}
                   onClick={handleEdit}

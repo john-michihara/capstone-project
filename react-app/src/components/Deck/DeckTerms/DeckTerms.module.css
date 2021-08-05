@@ -63,6 +63,11 @@
   text-decoration: none;
 }
 
-.button:hover {
+.button:hover:enabled {
   background-color: rgb(49, 165, 165);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  background-color: rgb(182, 182, 182);
 }
