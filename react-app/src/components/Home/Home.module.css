@@ -83,6 +83,18 @@
   font-weight: bold;
 }
 
+.creatorDetails {
+  display: flex;
+  align-items: center;
+}
+
+.imageContainer {
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+}
+
 .creator {
   color:rgb(48, 53, 69);
+  font-weight: bold;
 }

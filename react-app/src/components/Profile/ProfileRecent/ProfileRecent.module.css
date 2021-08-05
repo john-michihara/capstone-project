@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: 72px;
+  height: 88px;
   background-color: rgb(255, 255, 255);
   margin-bottom: 10px;
   padding: 12px 20px;
@@ -17,6 +17,9 @@
 
 .details {
   margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .number {
@@ -26,10 +29,16 @@
   border-right: 1px solid rgb(231, 231, 231);
 }
 
+.imageContainer {
+  width: 20px;
+  height: 20px;
+  margin-left: 20px;
+}
+
 .creator {
   font-size: 14px;
   color: rgb(60, 207, 207);
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .creator:hover {

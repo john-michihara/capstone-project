@@ -20,11 +20,41 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
 .title {
-  margin: 0 0 40px 0;
+  margin: 0;
   font-size: 30px;
+  color: rgb(48, 53, 69);
+
+}
+
+.creatorDetails {
+  display: flex;
+}
+
+.imageContainer {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.createdByContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.createdBy {
+  color: rgb(147, 155, 180);
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.creator {
+  font-size: 14px;
   color: rgb(48, 53, 69);
 }
 

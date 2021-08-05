@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserDecks } from '../../store/userDecks';
+import ProfilePic from '../ProfilePic';
 import styles from './Home.module.css';
 
 const Home = () => {
@@ -35,7 +36,12 @@ const Home = () => {
                       <h5 className={styles.deckTitle}>{deck.details.title}</h5>
                       <p className={styles.terms}>{deck.details.cards.length} terms</p>
                     </div>
-                    <div className={styles.creator}>{deck.details.creator.username}</div>
+                    <div className={styles.creatorDetails}>
+                      <div className={styles.imageContainer}>
+                        <ProfilePic user={user} />
+                      </div>
+                      <div className={styles.creator}>{deck.details.creator.username}</div>
+                    </div>
                   </div>
                 </Link>
               )

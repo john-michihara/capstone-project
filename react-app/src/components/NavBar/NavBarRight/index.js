@@ -38,7 +38,7 @@ const NavBarRight = () => {
               required={true}
             />
           </form>
-          <ProfileDropdown />
+          <ProfileDropdown user={user} />
         </>
       ) : (
         <div>
