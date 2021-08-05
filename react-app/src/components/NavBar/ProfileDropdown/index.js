@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ProfileDropdownMenu from './ProfileDropdownMenu';
+import ProfilePic from '../../ProfilePic';
 import styles from './ProfileDropdown.module.css';
 
-const ProfileDropdown = () => {
+const ProfileDropdown = ({ user }) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -22,7 +23,9 @@ const ProfileDropdown = () => {
 
   return (
     <div>
-      <button className={styles.profile} onClick={openMenu}>J</button>
+      <button className={styles.profile} onClick={openMenu}>
+        <ProfilePic user={user} />
+      </button>
       {showMenu && <ProfileDropdownMenu />}
     </div>
   );

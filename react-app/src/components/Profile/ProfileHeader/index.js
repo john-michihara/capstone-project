@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import ProfilePic from '../../ProfilePic';
 import styles from './ProfileHeader.module.css';
 
 const ProfileHeader = () => {
@@ -10,7 +11,7 @@ const ProfileHeader = () => {
       <div className={styles.header}>
         <div className={styles.profile}>
           <div className={styles.imageContainer}>
-            <img className={styles.profileImage} src={user.profile_url}></img>
+            <ProfilePic user={user} />
           </div>
           <div className={styles.names}>
             <h2 className={styles.username}>{user.username}</h2>
