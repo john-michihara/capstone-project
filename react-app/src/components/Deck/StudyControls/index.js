@@ -59,26 +59,26 @@ const StudyControls = ({ deck }) => {
             <div className={styles.buttons}>
               <div className={styles.buttonsHeader}>STUDY</div>
 
-              <div className={styles.buttonContainer}>
+              <button className={styles.button}>
                 <span className={styles.buttonIcon}>
                   <i className="fas fa-clone" />
                 </span>
                 <span>Flashcards</span>
-              </div>
+              </button>
 
-              <div className={styles.buttonContainer}>
+              <button className={styles.button}>
                 <span className={styles.buttonIcon}>
                   <i className="fas fa-keyboard" />
                 </span>
                 <span>Write</span>
-              </div>
+              </button>
 
-              <div className={styles.buttonContainer}>
+              <button className={styles.button}>
                 <span className={styles.buttonIcon}>
                   <i className="fas fa-copy" />
                 </span>
                 <span>Test</span>
-              </div>
+              </button>
 
               <div className={styles.marginContainer}>
                 <div className={styles.buttonsHeader}>DECK SETTINGS</div>
@@ -90,7 +90,7 @@ const StudyControls = ({ deck }) => {
                     disabled={user.id === deck?.creator_id}
                   >
                     <span className={styles.buttonIcon}>
-                      <i className="fas fa-plus-circle" />
+                      <i className="fas fa-minus-circle" />
                     </span>
                     <span>Remove from Library</span>
                   </button>)
@@ -106,7 +106,7 @@ const StudyControls = ({ deck }) => {
                     <span>Add to Library</span>
                   </button>))
                 }
-                
+
                 <button
                   className={styles.button}
                   onClick={handleEdit}
