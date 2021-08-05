@@ -6,12 +6,10 @@ import CardsForm from '../FormComponents/CardsForm';
 
 import { getDeck } from '../../store/decks';
 import { updateDeck } from '../../store/decks';
-import { deleteDeck } from '../../store/decks';
 import styles from './UpdateDeckForm.module.css';
 
 const UpdateDeckForm = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { deckId } = useParams();
   let deck = useSelector(state => state.decks[deckId]);
   const user = useSelector(state => state.session.user);
@@ -54,15 +52,6 @@ const UpdateDeckForm = () => {
     }
   };
 
-  const handleDelete = async (e) => {
-    const data = await dispatch(deleteDeck(parseInt(deckId)))
-    if (data) {
-      setErrors(data);
-    } else {
-      history.push('/');
-    }
-  }
-
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -83,7 +72,6 @@ const UpdateDeckForm = () => {
           setFields={setFields}
         />
       </form>
-      <button onClick={() => handleDelete(deckId)}>Delete Deck</button>
     </>
   );
 

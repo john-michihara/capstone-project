@@ -33,6 +33,10 @@
   justify-content: space-between;
 }
 
+.marginContainer {
+  margin-top: 20px;
+}
+
 .buttonsHeader {
   color: rgb(147, 155, 180);
   font-size: 12px;
@@ -47,16 +51,35 @@
   cursor: pointer;
   padding: 8px;
   border-radius: 4px;
-  transition: background-color 200ms;
-}
-
-.buttonContainer:hover {
-  background-color: rgb(254, 204, 57);
 }
 
 .buttonIcon {
   color: rgb(68, 90, 176);
   margin-right: 15px;
   font-size: 25px;
+  transition: background-color 200ms;
 }
 
+.button:hover:enabled {
+  background-color: rgb(254, 204, 57);
+}
+
+.button {
+  border: none;
+  background: none;
+  font-size: 16px;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+.button:disabled .buttonIcon {
+  color: rgb(182, 182, 182);
+}
