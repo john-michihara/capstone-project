@@ -2,15 +2,6 @@ from .db import db
 from datetime import datetime
 
 
-# user_decks = db.Table(
-#     'user_decks',
-#     db.Column('deck_id', db.Integer, db.ForeignKey(
-#         'decks.id'), primary_key=True),
-#     db.Column('user_id', db.Integer, db.ForeignKey(
-#         'users.id'), primary_key=True)
-# )
-
-
 class Deck(db.Model):
     __tablename__ = 'decks'
 
@@ -30,10 +21,7 @@ class Deck(db.Model):
     cards = db.relationship(
         'Card', lazy='subquery', back_populates='deck', cascade="delete, merge, save-update")
     user_decks = db.relationship(
-        'UserDeck', back_populates='deck', cascade="delete, merge, save-update")
-
-    # users = db.relationship('User', secondary=user_decks,
-    #                         back_populates='decks')
+        'UserDeck', lazy='subquery', back_populates='deck', cascade="delete, merge, save-update")
 
     def to_dict(self):
         return {
@@ -45,5 +33,5 @@ class Deck(db.Model):
             'creator': self.creator.to_dict(),
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'cards': [card.to_dict() for card in self.cards]
+            'cards': [card.to_dict() for card in self.cards],
         }

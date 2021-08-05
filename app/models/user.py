@@ -12,16 +12,14 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
 
     created_decks = db.relationship('Deck', back_populates='creator')
-    user_decks = db.relationship('UserDeck', back_populates='user')
+    user_decks = db.relationship(
+        'UserDeck', lazy='subquery', cascade="delete, merge, save-update", back_populates='user')
 
-    # decks = db.relationship('Deck', secondary=user_decks,
-    #                         back_populates='users')
-
-    @property
+    @ property
     def password(self):
         return self.hashed_password
 
-    @password.setter
+    @ password.setter
     def password(self, password):
         self.hashed_password = generate_password_hash(password)
 
