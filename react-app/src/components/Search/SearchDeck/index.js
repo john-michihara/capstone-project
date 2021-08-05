@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ProfilePic from '../../ProfilePic';
 import styles from './SearchDeck.module.css';
 
 const SearchDeck = ({ deck, selected, setSelected }) => {
@@ -34,7 +35,10 @@ const SearchDeck = ({ deck, selected, setSelected }) => {
             </button>
           }
         </div>
-        <div>
+        <div className={styles.creatorDetails}>
+          <div className={styles.imageContainer}>
+            <ProfilePic user={deck.creator} />
+          </div>
           <p className={styles.creator}>{deck.creator.username}</p>
         </div>
       </div>
