@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import CardsDisplay from '../CardsDisplay';
+import ProfilePic from '../../ProfilePic';
 import { deleteDeck } from '../../../store/decks';
 import { createUserDeck } from '../../../store/userDecks';
 import { getUserDecks } from '../../../store/userDecks';
@@ -52,7 +53,15 @@ const StudyControls = ({ deck }) => {
         <div className={styles.margin}>
           <div className={styles.header}>
             <h2 className={styles.title}>{deck?.title}</h2>
-            <div>Created by {deck?.creator.username}</div>
+            <div className={styles.creatorDetails}>
+              <div className={styles.imageContainer}>
+                <ProfilePic user={deck?.creator} />
+              </div>
+              <div className={styles.createdByContainer}>
+                <div className={styles.createdBy}>Created by</div>
+                <div className={styles.creator}>{deck?.creator.username}</div>
+              </div>
+            </div>
           </div>
           <div className={styles.container}>
 
