@@ -6,11 +6,13 @@ def seed_users():
     demo = User(
         username='Demo',
         email='demo@aa.io',
-        password='password')
+        password='password',
+        profile_url='https://3.bp.blogspot.com/-uF9VsXtCfz0/VCIkHKJUTSI/AAAAAAAAmjw/Zmw2VGrZyyY/s800/monster05.png')
     marnie = User(
         username='marnie',
         email='marnie@aa.io',
-        password='password')
+        password='password',
+        profile_url='https://3.bp.blogspot.com/-66UXoSvwaOc/VCIkJiqQVMI/AAAAAAAAmkU/8lvbCe4sz9s/s800/monster10.png')
     bobbie = User(
         username='bobbie',
         email='bobbie@aa.io',

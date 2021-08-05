@@ -20,6 +20,18 @@
   align-items: center;
 }
 
+.imageContainer {
+  height: 64px;
+  width: 64px;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 60px;
+}
+
 .image {
   width: 64px;
   height: 64px;
