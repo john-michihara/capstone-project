@@ -10,7 +10,7 @@ const NavBarLeft = () => {
       <NavLink
         className={styles.home}
         activeClassName={styles.active}
-        to='/' exact={true}>
+        to='/home' exact={true}>
         Home
       </NavLink>
       <button className={styles.library}>
