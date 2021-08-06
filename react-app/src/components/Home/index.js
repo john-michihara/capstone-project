@@ -19,7 +19,7 @@ const Home = () => {
       <div className={styles.container}>
         <div className={styles.margin}>
           <div className={styles.banner}>
-            <div className={styles.bannerText}>Quicklet is still growing, but check out our Japanese, Hawaiian, and Latin decks!</div>
+            <div className={styles.bannerText}>Quicklet is still growing, but check out our Japanese, Latin, and Hawaiian decks!</div>
             <Link to='/search/japanese' exact={true}>
               <button className={styles.searchButton}>Search</button>
             </Link>
