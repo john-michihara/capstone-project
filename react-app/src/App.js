@@ -14,6 +14,7 @@ import UpdateDeckForm from './components/UpdateDeckForm';
 import Deck from './components/Deck';
 import Splash from './components/Splash';
 import Search from './components/Search';
+import Footer from './components/Footer';
 import { authenticate } from './store/session';
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/home' exact={true} >
           <Home />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/profile/:username' exact={true} >
           <Profile />
