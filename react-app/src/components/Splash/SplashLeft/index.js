@@ -9,7 +9,7 @@ const SplashLeft = () => {
 
   const handleDemo = () => {
     (async () => {
-      await dispatch(login('marnie@aa.io', 'password'));
+      await dispatch(login('demo@aa.io', 'password'));
     })();
   };
 
