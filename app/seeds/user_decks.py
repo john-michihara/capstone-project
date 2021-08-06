@@ -3,17 +3,20 @@ from app.models import db, UserDeck
 
 # Adds a demo user, you can add other users here if you want
 def seed_user_decks():
-    user_deck1 = UserDeck(user_id=1, deck_id=1)
-    user_deck2 = UserDeck(user_id=1, deck_id=2)
-    user_deck3 = UserDeck(user_id=1, deck_id=3)
-    user_deck4 = UserDeck(user_id=1, deck_id=4)
-    user_deck5 = UserDeck(user_id=2, deck_id=5)
+    user_decks = [
+        UserDeck(user_id=1, deck_id=1),
+        UserDeck(user_id=1, deck_id=4),
+        UserDeck(user_id=1, deck_id=7),
+        UserDeck(user_id=1, deck_id=10),
+        UserDeck(user_id=1, deck_id=13),
+        UserDeck(user_id=1, deck_id=16),
+        UserDeck(user_id=1, deck_id=19),
+        UserDeck(user_id=1, deck_id=22),
+        UserDeck(user_id=1, deck_id=24),
+    ]
 
-    db.session.add(user_deck1)
-    db.session.add(user_deck2)
-    db.session.add(user_deck3)
-    db.session.add(user_deck4)
-    db.session.add(user_deck5)
+    for user_deck in user_decks:
+        db.session.add(user_deck)
 
     db.session.commit()
 

@@ -28,7 +28,6 @@ def filter_decks():
             or_(
                 Deck.title.ilike('%' + search_query + '%'),
                 Deck.description.ilike('%' + search_query + '%'))
-        # change back to True later
-        ).filter(Deck.public == False).all()
+        ).filter(Deck.public == True).all()
         return {'filtered_decks': [deck.to_dict() for deck in filtered_decks]}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

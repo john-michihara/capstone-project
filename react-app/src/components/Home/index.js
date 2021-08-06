@@ -38,7 +38,7 @@ const Home = () => {
                     </div>
                     <div className={styles.creatorDetails}>
                       <div className={styles.imageContainer}>
-                        <ProfilePic user={user} />
+                        <ProfilePic user={deck.details.creator} />
                       </div>
                       <div className={styles.creator}>{deck.details.creator.username}</div>
                     </div>
