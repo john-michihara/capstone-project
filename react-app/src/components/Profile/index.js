@@ -36,7 +36,7 @@ const Profile = () => {
   }, [dispatch, user]);
 
   return (
-    <>
+    <div className={styles.container}>
       <ProfileHeader />
       <div className={styles.containerSets}>
         <div className={styles.offsetContainer}>
@@ -49,12 +49,12 @@ const Profile = () => {
                 </span>
               </button>
               {showMenu && <ProfileDropdownMenu setSelected={setSelected} />}
-              <form className={styles.form}>
+              {/* <form className={styles.form}>
                 <span className={styles.icon}>
                   <i className="fas fa-search"></i>
                 </span>
                 <input className={styles.input} type='text' placeholder='Search your decks' />
-              </form>
+              </form> */}
             </div>
             {selected === 'Recent' && <ProfileRecent />}
             {selected === 'Created' && <ProfileCreated />}
@@ -62,16 +62,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-    </>
-    // <>
-    //   <h1>Last Studied</h1>
-    //   {userDecks.map(deck => (
-    //     <div>
-    //       <span key={deck.id}>{deck.details.title}</span>
-    //       <span key={deck.id}>{`Last studied: ${deck.last_studied}`}</span>
-    //     </div>
-    //   ))}
-    // </>
+    </div>
   );
 };
 

@@ -1,0 +1,31 @@
+.container {
+  background-color: rgb(68, 90, 176);
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  font-size: 14px;
+  padding: 25px 0 10px 0;
+  height: 150px;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  transition: color 200ms;
+}
+
+.link:hover {
+  color: rgb(162, 173, 216);
+}
+
+.icon {
+  margin-right: 5px;
+}
