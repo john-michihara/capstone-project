@@ -52,7 +52,7 @@ const SplashRight = () => {
           <div className={styles.fill}></div>
         </div>
         <div className={styles.content}>
-          <h2 className={styles.title}>FLASHCARDS IS FOR</h2>
+          <h2 className={styles.title}>QUICKLET IS FOR</h2>
           <div className={styles.message}>{`"${messages[slide]}" students`}</div>
         </div>
         <div></div>

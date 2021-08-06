@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserDecks } from '../../store/userDecks';
@@ -18,6 +18,12 @@ const Home = () => {
     <div className={styles.background}>
       <div className={styles.container}>
         <div className={styles.margin}>
+          <div className={styles.banner}>
+            <div className={styles.bannerText}>Quicklet is still growing, but check out our Japanese, Latin, and Hawaiian decks!</div>
+            <Link to='/search/japanese' exact={true}>
+              <button className={styles.searchButton}>Search</button>
+            </Link>
+          </div>
           <div className={styles.headerContainer}>
             <h2 className={styles.title}>Recent</h2>
             <Link className={styles.link} to={`/profile/${user.username}`} exact={true}>
