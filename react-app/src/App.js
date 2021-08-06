@@ -57,6 +57,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/profile/:username' exact={true} >
           <Profile />
+          <Footer />
         </ProtectedRoute>
         <ProtectedRoute path='/create-deck' exact={true} >
           <CreateDeckForm />
@@ -69,6 +70,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/search/:keyword' exact={true}>
           <Search />
+          <Footer />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
