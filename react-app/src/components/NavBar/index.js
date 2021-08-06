@@ -1,14 +1,16 @@
 import React from 'react';
-// import LogoutButton from '../auth/LogoutButton';
+import { useSelector } from 'react-redux';
 import NavBarLeft from './NavBarLeft';
 import NavBarRight from './NavBarRight';
 import styles from './NavBar.module.css';
 
 const NavBar = () => {
+  const user = useSelector(state => state.session.user);
+
   return (
     <nav className={styles.container}>
-      <NavBarLeft />
-      <NavBarRight />
+      <NavBarLeft user={user} />
+      <NavBarRight user={user} />
     </nav>
   );
 }

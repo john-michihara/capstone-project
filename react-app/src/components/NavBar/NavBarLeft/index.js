@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom';
 import CreateDropdown from '../CreateDropdown';
 import styles from './NavBarLeft.module.css';
 
-const NavBarLeft = () => {
+const NavBarLeft = ({ user }) => {
   return (
     <div className={styles.container}>
       <NavLink to='/' exact={true} className={styles.logo}>Quicklet</NavLink>
       <NavLink
         className={styles.home}
         activeClassName={styles.active}
-        to='/home' exact={true}>
+        to={user ? '/home' : '/'} exact={true}>
         Home
       </NavLink>
       <button className={styles.library}>

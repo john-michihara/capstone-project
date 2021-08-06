@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import ProfileDropdown from '../ProfileDropdown';
 import styles from './NavBarRight.module.css';
 
-const NavBarRight = () => {
+const NavBarRight = ({ user }) => {
   const history = useHistory();
-  const user = useSelector(state => state.session.user);
   const [keyword, setKeyword] = useState('');
   const [focus, setFocus] = useState(false);
 
