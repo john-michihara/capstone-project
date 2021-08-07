@@ -40,7 +40,7 @@ const NavBarRight = ({ user }) => {
         </>
       ) : (
         <div>
-          <Link to='/login' exact={true}>
+          <Link to='/login'>
             <button className={styles.login}>Log in</button>
           </Link>
           <Link to='/sign-up'>

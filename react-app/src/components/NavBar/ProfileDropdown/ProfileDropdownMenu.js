@@ -18,8 +18,7 @@ const ProfileDropdownMenu = () => {
       </div>
       <Link
         className={styles.decks}
-        to={`/profile/${user.username}`}
-        exact={true}>
+        to={`/profile/${user.username}`}>
         Profile
       </Link>
       <LogoutButton />

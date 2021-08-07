@@ -6,11 +6,11 @@ import styles from './NavBarLeft.module.css';
 const NavBarLeft = ({ user }) => {
   return (
     <div className={styles.container}>
-      <NavLink to='/' exact={true} className={styles.logo}>Quicklet</NavLink>
+      <NavLink to='/' className={styles.logo}>Quicklet</NavLink>
       <NavLink
         className={styles.home}
         activeClassName={styles.active}
-        to={user ? '/home' : '/'} exact={true}>
+        to={user ? '/home' : '/'}>
         Home
       </NavLink>
       <button className={styles.library}>

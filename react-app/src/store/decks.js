@@ -52,7 +52,7 @@ export const createDeck = (formData, fields) => async (dispatch) => {
 
   if (deckResponse.ok) {
     const deckData = await deckResponse.json();
-    const cardResponses = await Promise.all(
+    await Promise.all(
       fields.map(async field => {
         const { front, back } = field;
         return await fetch(`/api/decks/${parseInt(deckData.id)}/cards`, {

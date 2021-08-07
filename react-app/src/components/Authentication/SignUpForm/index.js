@@ -64,7 +64,7 @@ const SignUpForm = () => {
   return (
     <div className={styles.container}>
       <div className={styles.leftContainer}>
-        <img src='signup.svg' />
+        <img src='signup.svg' alt='Man with an A+ paper' />
       </div>
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={onSignUp}>
@@ -149,7 +149,7 @@ const SignUpForm = () => {
           </div>
           <div className={styles.loginContainer}>
             <span>Already have an account?</span>
-            <Link className={styles.link} to='/login' exact={true}>
+            <Link className={styles.link} to='/login'>
               <span>Log in</span>
             </Link>
           </div>

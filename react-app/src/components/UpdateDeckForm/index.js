@@ -3,13 +3,13 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import DeckForm from '../FormComponents/DeckForm';
 import CardsForm from '../FormComponents/CardsForm';
-
 import { getDeck } from '../../store/decks';
 import { updateDeck } from '../../store/decks';
 import styles from './UpdateDeckForm.module.css';
 
 const UpdateDeckForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { deckId } = useParams();
   let deck = useSelector(state => state.decks[deckId]);
   const user = useSelector(state => state.session.user);
@@ -49,6 +49,7 @@ const UpdateDeckForm = () => {
 
     } else {
       await dispatch(getDeck(parseInt(deckId)));
+      history.push(`/decks/${deckId}`);
     }
   };
 

@@ -28,7 +28,6 @@ export const getUserDecks = (userId) => async (dispatch) => {
 };
 
 export const createUserDeck = (userId, deckId) => async (dispatch) => {
-  console.log(userId, deckId)
   const response = await fetch('/api/user_decks', {
     method: 'POST',
     headers: {

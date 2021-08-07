@@ -12,7 +12,7 @@ const SearchDeck = ({ deck, selected, setSelected }) => {
   };
 
   return (
-    <Link className={styles.link} to={`/decks/${deck.id}`} exact={true}>
+    <Link className={styles.link} to={`/decks/${deck.id}`}>
       <div
         className={styles.container}
         onMouseEnter={() => setShowButton(true)}

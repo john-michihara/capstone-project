@@ -28,7 +28,6 @@ const DeckTerms = ({ deck }) => {
           <div className={styles.buttonContainer}>
             <Link
               to={`/decks/${deck?.id}/edit`}
-              exact={true}
             >
               <button
                 className={styles.button}

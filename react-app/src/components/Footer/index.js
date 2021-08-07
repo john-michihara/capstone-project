@@ -22,7 +22,7 @@ const Footer = () => {
           target='_blank'
           rel='noopener noreferrer'>
           <span className={styles.icon}>
-            <i class="fab fa-linkedin" />
+            <i className="fab fa-linkedin" />
           </span>
           <span>Linkedin</span>
         </a>

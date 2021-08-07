@@ -53,7 +53,7 @@ const Search = () => {
                 <div className={styles.decksContainer}>
                   <h2>Study decks</h2>
                   {decks.slice(0, (6 * numResults)).map(deck =>
-                    <SearchDeck deck={deck} selected={selected} setSelected={setSelected} />
+                    <SearchDeck deck={deck} selected={selected} setSelected={setSelected} key={deck.id} />
                   )}
                   {decks.length > 6 * numResults &&
                     <button className={styles.viewMore} onClick={handleViewMore}>View more</button>
@@ -64,12 +64,12 @@ const Search = () => {
                   <div className={styles.details}>
                     <div className={styles.header}>
                       <h3 className={styles.title}>{decksById[selected]?.title}</h3>
-                      <Link to={`/decks/${decksById[selected]?.id}`} exact={true}>
+                      <Link to={`/decks/${decksById[selected]?.id}`}>
                         <button className={styles.button}>Study</button>
                       </Link>
                     </div>
                     {decksById && decksById[selected]?.cards.map(card => (
-                      <div className={styles.card}>
+                      <div className={styles.card} key={card.id}>
                         <div className={styles.front}>{card.front}</div>
                         <div className={styles.back}>{card.back}</div>
                       </div>

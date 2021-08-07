@@ -20,6 +20,7 @@ const CardsForm = ({ button, fields, setFields }) => {
             setFields={setFields}
             field={field}
             idx={idx}
+            key={idx}
           />
         ))}
         <button
