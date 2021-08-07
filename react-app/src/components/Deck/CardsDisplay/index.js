@@ -23,10 +23,13 @@ const CardsDisplay = ({ deck, showBack, setShowBack, page, setPage }) => {
         onClick={() => setShowBack(!showBack)}
         style={showBack ? { transform: 'rotateX(180deg)' } : null}
       >
-        <div className={`${styles.face} ${styles.front}`}>
+        <div
+          className={`${styles.face} ${styles.front}`}
+          style={showBack ? { color: 'black' } : { color: 'white' }} >
           {deck?.cards[page - 1].back}
         </div>
-        <div className={`${styles.face} ${styles.back}`}>
+        <div
+          className={`${styles.face} ${styles.back}`}>
           {deck?.cards[page - 1].front}
         </div>
       </div>
@@ -51,7 +54,7 @@ const CardsDisplay = ({ deck, showBack, setShowBack, page, setPage }) => {
           <i className="fas fa-arrow-right" />
         </span>
       </div>
-    </div>
+    </div >
   );
 };
 
