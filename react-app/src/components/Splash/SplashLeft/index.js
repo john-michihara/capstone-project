@@ -19,7 +19,7 @@ const SplashLeft = () => {
         <h1 className={styles.title}>Become your most unstoppable self</h1>
         <p className={styles.subtitle}>Master any subject, one success at a time.</p>
         <div>
-          <Link to='/login' exact={true}>
+          <Link to='/login'>
             <button className={styles.signupButton}>Get started</button>
           </Link>
           <button
