@@ -19,9 +19,15 @@ const CardField = ({ fields, setFields, field, idx }) => {
     <div className={styles.cardContainer} key={idx}>
       <div className={styles.cardHeader}>
         <span className={styles.cardNumber}>{idx + 1}</span>
-        <span onClick={() => deleteCard(idx)} >
-          <i className="far fa-trash-alt"></i>
-        </span>
+        <div>
+          <button
+            className={styles.deleteButton}
+            onClick={() => deleteCard(idx)}
+            disabled={fields.length < 3}
+          >
+            <i className="far fa-trash-alt" />
+          </button>
+        </div>
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.content}>
