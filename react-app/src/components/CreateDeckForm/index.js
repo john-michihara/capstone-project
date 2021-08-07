@@ -16,7 +16,7 @@ const CreateDeckForm = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [viewable, setViewable] = useState(false);
-  const [fields, setFields] = useState([{ front: '', back: '' }, { front: '', back: '' }]);
+  const [fields, setFields] = useState([{ front: '', back: '' }, { front: '', back: '' }, { front: '', back: '' }, { front: '', back: '' }, { front: '', back: '' },]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

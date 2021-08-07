@@ -18,6 +18,21 @@
   font-weight: bold;
 }
 
+.deleteButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: color 200ms;
+}
+
+.deleteButton:enabled:hover {
+  color: rgb(254, 204, 57)
+}
+
+.deleteButton:disabled {
+  cursor: not-allowed;
+}
+
 .contentContainer {
   display: flex;
   justify-content: space-between;
