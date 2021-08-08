@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import CreateDropdown from '../CreateDropdown';
+import LibraryDropdown from '../LibraryDropdown';
 import styles from './NavBarLeft.module.css';
 
 const NavBarLeft = ({ user }) => {
@@ -13,12 +14,7 @@ const NavBarLeft = ({ user }) => {
         to={user ? '/home' : '/'}>
         Home
       </NavLink>
-      <button className={styles.library}>
-        <span className={styles.libraryText}>Your library</span>
-        <span className={styles.icon}>
-          <i className="fas fa-chevron-down" />
-        </span>
-      </button>
+      <LibraryDropdown />
       <CreateDropdown />
     </div>
   );
