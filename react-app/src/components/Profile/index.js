@@ -58,7 +58,6 @@ const Profile = () => {
             </div>
             {selected === 'Recent' && <ProfileRecent />}
             {selected === 'Created' && <ProfileCreated />}
-            {selected === 'Studied' && (<h1>studied</h1>)}
           </div>
         </div>
       </div>
