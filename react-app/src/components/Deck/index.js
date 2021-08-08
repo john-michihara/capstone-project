@@ -12,7 +12,9 @@ const Deck = () => {
   const deck = useSelector(state => state.decks[deckId]);
 
   useEffect(() => {
-    dispatch(getDeck(deckId))
+    // Page starts at different heights depending on the search...
+    window.scrollTo(0, 0);
+    dispatch(getDeck(deckId));
   }, [dispatch]);
 
   return (
