@@ -15,6 +15,10 @@
   border-bottom: 4px solid rgb(207, 219, 242);
 }
 
+.link {
+  text-decoration: none;
+}
+
 .details {
   margin-bottom: 15px;
 }
