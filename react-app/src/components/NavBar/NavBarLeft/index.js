@@ -14,8 +14,8 @@ const NavBarLeft = ({ user }) => {
         to={user ? '/home' : '/'}>
         Home
       </NavLink>
-      <LibraryDropdown />
-      <CreateDropdown />
+      {user && <LibraryDropdown />}
+      {user && <CreateDropdown />}
     </div>
   );
 };
