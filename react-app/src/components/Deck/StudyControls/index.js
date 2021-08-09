@@ -43,8 +43,9 @@ const StudyControls = ({ deck }) => {
 
   const handleDelete = async (e) => {
     if (user.id !== deck?.creator_id) return;
-    await dispatch(deleteDeck(parseInt(deck?.id)))
+    await dispatch(deleteDeck(parseInt(deck?.id)));
     history.push('/');
+    window.location.reload();
   }
 
   return (
