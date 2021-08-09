@@ -93,7 +93,7 @@ const Flashcards = () => {
                 className={`${styles.face} ${styles.front}`}
                 style={showBack ? { color: 'black' } : { color: 'white' }}>
                 <div></div>
-                <div>{shuffled ? shuffledCards[page - 1].back : deck?.cards.[page - 1].back}</div>
+                <div>{shuffled ? shuffledCards[page - 1].back : deck?.cards[page - 1].back}</div>
                 {page === 1 ? (<div className={styles.instructions}>Click card to see term</div>) : (<div className={styles.instructionsInvisible}></div>)}
               </div>
               <div
