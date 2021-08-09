@@ -114,3 +114,7 @@
 .button:disabled .buttonIcon {
   color: rgb(182, 182, 182);
 }
+
+.link {
+  text-decoration: none;
+}

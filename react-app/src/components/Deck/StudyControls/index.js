@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import CardsDisplay from '../CardsDisplay';
 import ProfilePic from '../../ProfilePic';
@@ -68,12 +68,14 @@ const StudyControls = ({ deck }) => {
             <div className={styles.buttons}>
               <div className={styles.buttonsHeader}>STUDY</div>
 
-              <button className={styles.button}>
-                <span className={styles.buttonIcon}>
-                  <i className="fas fa-clone" />
-                </span>
-                <span>Flashcards</span>
-              </button>
+              <Link className={styles.link} to={`/decks/${deck?.id}/flashcards`}>
+                <button className={styles.button}>
+                  <span className={styles.buttonIcon}>
+                    <i className="fas fa-clone" />
+                  </span>
+                  <span>Flashcards</span>
+                </button>
+              </Link>
 
               <button className={styles.button}>
                 <span className={styles.buttonIcon}>
