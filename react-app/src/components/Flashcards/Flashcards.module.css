@@ -94,6 +94,16 @@
   margin-top: 5px;
 }
 
+.shuffleButtonOn {
+  background: rgb(254, 204, 57);
+  border: none;
+  color: rgb(48, 53, 69);
+  border: 1px solid rgb(254, 204, 57);
+  padding: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .shuffleButton {
   background: none;
   border: none;

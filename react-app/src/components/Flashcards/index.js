@@ -8,9 +8,12 @@ const Flashcards = () => {
   const dispatch = useDispatch();
   const { deckId } = useParams();
   const deck = useSelector(state => state.decks[deckId]);
+
   const [highlight, setHighlight] = useState(false);
   const [page, setPage] = useState(1);
   const [showBack, setShowBack] = useState(false);
+  const [shuffled, setShuffled] = useState(false);
+  const [shuffledCards, setShuffledCards] = useState([]);
 
   useEffect(() => {
     dispatch(getDeck(deckId));
@@ -28,6 +31,12 @@ const Flashcards = () => {
       setPage(page + 1);
       setShowBack(false);
     }
+  };
+
+  const handleShuffle = () => {
+    setShuffled(!shuffled);
+    const cardsCopy = [...deck?.cards];
+    setShuffledCards(cardsCopy.sort(() => Math.random() - 0.5));
   };
 
   return (
@@ -54,14 +63,15 @@ const Flashcards = () => {
                 <span>Flashcards</span>
               </div>
               <div className={styles.progressBar}>
-                <div className={styles.progress} style={{ width: `${(page / deck?.cards.length) * 100}%` }}></div>
+                <div className={styles.progress}
+                  style={{ width: `${(page / deck?.cards.length) * 100}%` }}></div>
               </div>
               <div className={styles.progressText}>
                 <div>Progress</div>
                 <div>{page}/{deck?.cards.length}</div>
               </div>
             </div>
-            <button className={styles.shuffleButton}>
+            <button className={shuffled ? styles.shuffleButtonOn : styles.shuffleButton} onClick={handleShuffle}>
               <span className={styles.shuffleIcon}>
                 <i className="fas fa-random" />
               </span>
@@ -83,13 +93,13 @@ const Flashcards = () => {
                 className={`${styles.face} ${styles.front}`}
                 style={showBack ? { color: 'black' } : { color: 'white' }}>
                 <div></div>
-                <div>{deck?.cards[page - 1].back}</div>
+                <div>{shuffled ? shuffledCards[page - 1].back : deck?.cards.[page - 1].back}</div>
                 {page === 1 ? (<div className={styles.instructions}>Click card to see term</div>) : (<div className={styles.instructionsInvisible}></div>)}
               </div>
               <div
                 className={`${styles.face} ${styles.back}`}>
                 <div></div>
-                {deck?.cards[page - 1].front}
+                {shuffled ? shuffledCards[page - 1].front : deck?.cards[page - 1].front}
                 {page === 1 ? (<div className={styles.instructions}>Click card to see term</div>) : (<div className={styles.instructionsInvisible}>Nothing</div>)}
               </div>
             </div>
