@@ -24,6 +24,7 @@ const CardField = ({ fields, setFields, field, idx }) => {
             className={styles.deleteButton}
             onClick={() => deleteCard(idx)}
             disabled={fields.length < 3}
+            type='button'
           >
             <i className="far fa-trash-alt" />
           </button>
