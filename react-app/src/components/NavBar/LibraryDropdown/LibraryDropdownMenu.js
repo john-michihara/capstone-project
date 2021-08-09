@@ -25,7 +25,8 @@ const LibraryDropdownMenu = () => {
         {userDecks && Object.values(userDecks).map(deck => (
           <Link
             className={styles.link}
-            to={`/decks/${deck.deck_id}`}>
+            to={`/decks/${deck.deck_id}`}
+            key={deck.deck_id}>
             <div className={styles.container}>
               <div className={styles.title}>
                 {deck.details.title}
