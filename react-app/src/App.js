@@ -15,6 +15,7 @@ import Deck from './components/Deck';
 import Splash from './components/Splash';
 import Search from './components/Search';
 import Footer from './components/Footer';
+import Flashcards from './components/Flashcards';
 import { authenticate } from './store/session';
 
 function App() {
@@ -64,6 +65,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/decks/:deckId/edit' exact={true} >
           <UpdateDeckForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/decks/:deckId/flashcards' exact={true} >
+          <Flashcards />
         </ProtectedRoute>
         <ProtectedRoute path='/decks/:deckId' exact={true} >
           <Deck />
