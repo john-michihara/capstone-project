@@ -15,8 +15,6 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
-    // Need to work on clearing out store when switching users -- fix for now?
-    window.location.reload();
     if (data) {
       setErrors(data);
     }
