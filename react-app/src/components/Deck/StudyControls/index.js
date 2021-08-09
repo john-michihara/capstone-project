@@ -77,7 +77,7 @@ const StudyControls = ({ deck }) => {
                 </button>
               </Link>
 
-              <button className={styles.button}>
+              {/* <button className={styles.button}>
                 <span className={styles.buttonIcon}>
                   <i className="fas fa-keyboard" />
                 </span>
@@ -89,7 +89,7 @@ const StudyControls = ({ deck }) => {
                   <i className="fas fa-copy" />
                 </span>
                 <span>Test</span>
-              </button>
+              </button> */}
 
               <div className={styles.marginContainer}>
                 <div className={styles.buttonsHeader}>DECK SETTINGS</div>
