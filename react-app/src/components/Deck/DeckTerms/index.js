@@ -11,7 +11,7 @@ const DeckTerms = ({ deck }) => {
       <div className={styles.offset}>
         <div className={styles.margin}>
           <div className={styles.header}>
-            <h2>Terms in this set ({deck?.cards.length})</h2>
+            <h2>Terms in this deck ({deck?.cards.length})</h2>
             {/* <select>
             <option>Original</option>
             <option>Alphabetical</option>
