@@ -1,7 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from sqlalchemy import asc
-from app.models import User
+from app.models import db, User
 from app.models import Deck
 from app.models import UserDeck
 
@@ -36,3 +36,13 @@ def get_user_created(id):
 def get_user_decks(id):
     user_decks = UserDeck.query.filter_by(user_id=id).all()
     return {'decks': [deck.to_dict() for deck in user_decks]}
+
+
+@user_routes.route('/<int:id>/profile_picture', methods=['PUT'])
+@login_required
+def update_user_profile_picture(id):
+    user = User.query.get(id)
+    user.profile_url = request.get_json()['url']
+    db.session.add(user)
+    db.session.commit()
+    return user.to_dict()

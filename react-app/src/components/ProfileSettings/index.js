@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
+import { updateProfilePicture } from "../../store/session";
 import styles from "./ProfileSettings.module.css";
 
 const profilePictureURLs = [
@@ -10,17 +11,20 @@ const profilePictureURLs = [
 ];
 
 const ProfileSettings = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const [selectedPicture, setSelectedPicture] = useState("");
 
   const pictureSelectionHandler = (url) => {
     setSelectedPicture(url);
-    console.log(url);
+    dispatch(updateProfilePicture(url, user.id));
   };
 
   return (
     <div>
       <h1>Choose your profile picture</h1>
+      <h2>Profile Picture</h2>
+      <img src={user.profile_url} height="100px" style={{ display: "block" }} />
       {profilePictureURLs.map((url, idx) => (
         <img src={url} key={idx} onClick={() => pictureSelectionHandler(url)} />
       ))}
