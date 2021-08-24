@@ -1,3 +1,5 @@
+import ProfileSettings from "../components/ProfileSettings";
+
 // constants
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
@@ -103,6 +105,26 @@ export const updateProfilePicture = (url, id) => async (dispatch) => {
     body: JSON.stringify({
       url,
     }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ["server : An error occurred. Please try again."];
+  }
+};
+
+export const uploadProfilePicture = (formData) => async (dispatch) => {
+  const response = await fetch(`/api/users/upload_profile_picture`, {
+    method: "PUT",
+    body: formData,
   });
 
   if (response.ok) {
