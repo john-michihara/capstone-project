@@ -21,7 +21,6 @@ const SignUpForm = () => {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
-
         data.forEach(error => {
           const [field, message] = error.split(' : ');
           errorsObj[field] = message;
