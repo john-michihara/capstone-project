@@ -85,6 +85,4 @@ def react_root(path):
         return app.send_static_file('signup.svg')
     if path == 'login.svg':
         return app.send_static_file('login.svg')
-    if path == 'quicklet.png':
-        return app.send_static_file('quicklet.png')
     return app.send_static_file('index.html')
