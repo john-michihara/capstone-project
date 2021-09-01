@@ -16,6 +16,8 @@ class User(db.Model, UserMixin):
     created_decks = db.relationship('Deck', back_populates='creator')
     user_decks = db.relationship(
         'UserDeck', lazy='subquery', cascade="delete, merge, save-update", back_populates='user')
+    ratings = db.relationship(
+        'Rating', lazy='subquery', cascade="delete, merge, save-update", back_populates='user')
 
     @ property
     def password(self):

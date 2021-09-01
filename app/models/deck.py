@@ -22,6 +22,8 @@ class Deck(db.Model):
         'Card', lazy='subquery', back_populates='deck', cascade="delete, merge, save-update")
     user_decks = db.relationship(
         'UserDeck', lazy='subquery', back_populates='deck', cascade="delete, merge, save-update")
+    ratings = db.relationship('Rating', lazy='subquery', back_populates='deck', cascade="delete, merge, save-update")
+
 
     def to_dict(self):
         return {
@@ -34,4 +36,5 @@ class Deck(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'cards': [card.to_dict() for card in self.cards],
+            'ratings': [rating.to_dict() for rating in self.ratings]
         }

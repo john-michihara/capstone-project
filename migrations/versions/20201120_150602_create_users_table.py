@@ -67,6 +67,15 @@ def upgrade():
                     sa.PrimaryKeyConstraint('id'),
                     sa.ForeignKeyConstraint(['deck_id'], ['decks.id'])
                     )
+
+    op.create_table('ratings',
+                    sa.Column('deck_id', sa.Integer(), nullable=False),
+                    sa.Column('user_id', sa.Integer(), nullable=False),
+                    sa.Column('value', sa.Integer(), nullable=False),
+                    sa.PrimaryKeyConstraint('deck_id', 'user_id'),
+                    sa.ForeignKeyConstraint(['deck_id'], ['decks.id']),
+                    sa.ForeignKeyConstraint(['user_id'], ['users.id'])
+                    )
     # ### end Alembic commands ###qqqqqqqqq
 
 
@@ -76,4 +85,5 @@ def downgrade():
     op.drop_table('decks')
     op.drop_table('cards')
     op.drop_table('user_decks')
+    op.drop_table('ratings')
     # ### end Alembic commands ###
