@@ -52,7 +52,10 @@ const RatingsDisplay = ({ deck, setShowModal }) => {
         <>
           <div className={styles.rating}>{rating}</div>
           <div>{generateStars()}</div>
-          <div className={styles.reviews}>{deck.ratings.length} reviews</div>
+          <div className={styles.reviews}>
+            <span>{deck.ratings.length} </span>
+            <span>{deck.ratings.length === 1 ? "review" : "reviews"}</span>
+          </div>
         </>
       )}
       <button
