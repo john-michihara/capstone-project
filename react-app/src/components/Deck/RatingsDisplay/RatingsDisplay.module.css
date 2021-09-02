@@ -1,0 +1,35 @@
+.ratingsContainer {
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.ratingsContainer > * {
+  margin-right: 20px;
+}
+
+.rating,
+.reviews {
+  font-size: 16px;
+  color: rgb(48, 53, 69);
+  font-weight: lighter;
+}
+
+.star {
+  color: rgb(255, 205, 31);
+  font-size: 16px;
+}
+
+.ratingsButton {
+  background-color: inherit;
+  color: rgb(60, 207, 207);
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: color 200ms;
+  padding: 0;
+}
+
+.ratingsButton:hover {
+  color: rgb(255, 205, 31);
+}

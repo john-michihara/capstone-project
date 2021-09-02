@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CardsDisplay from "../CardsDisplay";
 import ProfilePic from "../../ProfilePic";
 import RatingsModal from "../../RatingsModal";
+import RatingsDisplay from "../RatingsDisplay";
 import { deleteDeck } from "../../../store/decks";
 import { createUserDeck } from "../../../store/userDecks";
 import { getUserDecks } from "../../../store/userDecks";
@@ -69,9 +70,7 @@ const StudyControls = ({ deck }) => {
                 </div>
               </div>
             </div>
-            <button type="button" onClick={() => setShowModal(true)}>
-              Leave a rating
-            </button>
+            <RatingsDisplay deck={deck} setShowModal={setShowModal} />
             <div className={styles.container}>
               <div className={styles.buttons}>
                 <div className={styles.buttonsHeader}>STUDY</div>
