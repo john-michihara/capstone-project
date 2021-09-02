@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import Form, StringField
+from wtforms import StringField
 
 
 class SearchForm(FlaskForm):

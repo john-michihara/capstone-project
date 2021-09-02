@@ -3,3 +3,4 @@ from .signup_form import SignUpForm
 from .deck_form import CreateDeckForm, UpdateDeckForm
 from .card_form import CreateCardForm
 from .search_form import SearchForm
+from .rating_form import RatingForm

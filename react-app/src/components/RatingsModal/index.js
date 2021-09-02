@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 import RatingStar from "./RatingStar";
+import { addDeckRating } from "../../store/decks";
 import styles from "./RatingsModal.module.css";
 
-const RatingsModal = ({ setShowModal }) => {
+const RatingsModal = ({ deck, setShowModal }) => {
+  const dispatch = useDispatch();
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [error, setError] = useState("");
@@ -30,6 +33,7 @@ const RatingsModal = ({ setShowModal }) => {
       return;
     }
     setShowModal(false);
+    dispatch(addDeckRating(+deck.id, selectedRating));
   };
 
   return (
