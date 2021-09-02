@@ -22,7 +22,7 @@ const RatingsDisplay = ({ deck, setShowModal }) => {
     let total = rating;
 
     for (let i = 1; i <= 5; i++) {
-      if (total - 1 >= 1) {
+      if (total - 1 >= 1 || total - 1 === 0) {
         stars.push(
           <span className={styles.star}>
             <i className="fas fa-star" />
@@ -52,7 +52,10 @@ const RatingsDisplay = ({ deck, setShowModal }) => {
         <>
           <div className={styles.rating}>{rating}</div>
           <div>{generateStars()}</div>
-          <div className={styles.reviews}>{deck.ratings.length} reviews</div>
+          <div className={styles.reviews}>
+            <span>{deck.ratings.length} </span>
+            <span>{deck.ratings.length === 1 ? "review" : "reviews"}</span>
+          </div>
         </>
       )}
       <button

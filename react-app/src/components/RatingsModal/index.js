@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import RatingStar from "./RatingStar";
 import { addDeckRating } from "../../store/decks";
 import styles from "./RatingsModal.module.css";
 
-const RatingsModal = ({ deck, setShowModal }) => {
+const RatingsModal = ({ deck, showModal, setShowModal }) => {
+  const modalRef = useRef();
   const dispatch = useDispatch();
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
@@ -36,9 +37,19 @@ const RatingsModal = ({ deck, setShowModal }) => {
     dispatch(addDeckRating(+deck.id, selectedRating));
   };
 
+  useEffect(() => {
+    let handler = (event) => {
+      if (!modalRef.current.contains(event.target)) {
+        setShowModal(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [showModal]);
+
   return (
     <div className={styles.backdrop}>
-      <div className={styles.modal}>
+      <div className={styles.modal} ref={modalRef}>
         <header className={styles.header}>
           <h2 className={styles.headerText}>How would you rate this deck?</h2>
           <button

@@ -54,7 +54,13 @@ const StudyControls = ({ deck }) => {
 
   return (
     <>
-      {showModal && <RatingsModal deck={deck} setShowModal={setShowModal} />}
+      {showModal && (
+        <RatingsModal
+          deck={deck}
+          showModal={showModal}
+          setShowModal={setShowModal}
+        />
+      )}
       <div className={styles.background}>
         <div className={styles.offset}>
           <div className={styles.margin}>
