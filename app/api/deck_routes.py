@@ -1,6 +1,7 @@
 from flask import Blueprint, request
+from flask_login import current_user
 from datetime import datetime
-from app.models import db, Deck, UserDeck, Card
+from app.models import db, Deck, UserDeck, Card, Rating
 from app.forms import CreateDeckForm, UpdateDeckForm, CreateCardForm
 
 

@@ -11,6 +11,7 @@ from .api.auth_routes import auth_routes
 from .api.deck_routes import deck_routes
 from .api.search_routes import search_routes
 from .api.user_deck_routes import user_deck_routes
+from .api.rating_routes import rating_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +38,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(deck_routes, url_prefix='/api/decks')
 app.register_blueprint(search_routes, url_prefix='/api/search')
 app.register_blueprint(user_deck_routes, url_prefix='/api/user_decks')
+app.register_blueprint(rating_routes, url_prefix='/api/ratings')
 db.init_app(app)
 Migrate(app, db)
 

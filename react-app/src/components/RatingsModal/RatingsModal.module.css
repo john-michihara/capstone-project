@@ -1,0 +1,90 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 30vh;
+  left: 30%;
+  width: 600px;
+  z-index: 100;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(66, 87, 178);
+  padding: 32px;
+}
+
+.headerText {
+  color: white;
+  font-size: 30px;
+  margin: 0;
+}
+
+.headerButton {
+  color: white;
+  background-color: inherit;
+  font-size: 24px;
+  border: 4px solid rgb(61, 79, 153);
+  border-radius: 50%;
+  padding: 11px 15px 10px 15px;
+  cursor: pointer;
+  transition: background-color 200ms;
+}
+
+.headerButton:hover {
+  background-color: rgb(61, 79, 153);
+}
+
+.main {
+  padding: 32px;
+}
+
+.ratings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ratingsText {
+  color: rgb(147, 155, 180);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.stars {
+  display: flex;
+  padding: 0;
+}
+
+.submitButton {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(60, 207, 207);
+  padding: 24px;
+  width: 100%;
+  border: none;
+  margin-top: 32px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 200ms;
+}
+
+.submitButton:hover {
+  background-color: rgb(51, 177, 177);
+}
