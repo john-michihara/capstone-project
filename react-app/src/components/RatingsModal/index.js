@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import RatingStar from "./RatingStar";
 import { addDeckRating } from "../../store/decks";
+import { editDeckRating } from "../../store/decks";
 import styles from "./RatingsModal.module.css";
 
 const RatingsModal = ({ deck, showModal, setShowModal }) => {
@@ -44,7 +45,7 @@ const RatingsModal = ({ deck, showModal, setShowModal }) => {
     }
 
     if (deck?.ratings.some((rating) => rating.user_id === user.id)) {
-      console.log("HI");
+      dispatch(editDeckRating(+deck.id, selectedRating));
     } else {
       dispatch(addDeckRating(+deck.id, selectedRating));
     }
