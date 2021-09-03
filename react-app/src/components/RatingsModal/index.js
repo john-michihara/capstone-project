@@ -1,16 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import RatingStar from "./RatingStar";
 import { addDeckRating } from "../../store/decks";
+import { editDeckRating } from "../../store/decks";
 import styles from "./RatingsModal.module.css";
 
 const RatingsModal = ({ deck, showModal, setShowModal }) => {
   const modalRef = useRef();
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.session.user);
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const rating = deck?.ratings.find((rating) => rating.user_id === user.id);
+    if (!rating) return;
+    setSelectedRating(rating.value);
+  }, []);
 
   const generateRatingStars = () => {
     const ratingStars = [];
@@ -22,6 +31,7 @@ const RatingsModal = ({ deck, showModal, setShowModal }) => {
           hoveredRating={hoveredRating}
           setHoveredRating={setHoveredRating}
           value={i}
+          key={i}
         />
       );
     }
@@ -33,8 +43,13 @@ const RatingsModal = ({ deck, showModal, setShowModal }) => {
       setError("Select a star rating to submit");
       return;
     }
+
+    if (deck?.ratings.some((rating) => rating.user_id === user.id)) {
+      dispatch(editDeckRating(+deck.id, selectedRating));
+    } else {
+      dispatch(addDeckRating(+deck.id, selectedRating));
+    }
     setShowModal(false);
-    dispatch(addDeckRating(+deck.id, selectedRating));
   };
 
   useEffect(() => {

@@ -191,6 +191,32 @@ export const addDeckRating = (deckId, value) => async (dispatch) => {
   }
 };
 
+export const editDeckRating = (deckId, value) => async (dispatch) => {
+  const response = await fetch("/api/ratings", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      value,
+      deckId,
+    }),
+  });
+
+  if (response.ok) {
+    const { deck } = await response.json();
+    dispatch(setDeck(deck));
+    return null;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data) {
+      return data;
+    }
+  } else {
+    return ["An error occurred. Please try again."];
+  }
+};
+
 export default function reducer(state = initialState, action) {
   let newState;
 

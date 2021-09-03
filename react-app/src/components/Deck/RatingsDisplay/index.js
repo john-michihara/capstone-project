@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import styles from "./RatingsDisplay.module.css";
 
 const RatingsDisplay = ({ deck, setShowModal }) => {
   const [rating, setRating] = useState(0);
+  const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     calculateRating();
@@ -22,21 +24,21 @@ const RatingsDisplay = ({ deck, setShowModal }) => {
     let total = rating;
 
     for (let i = 1; i <= 5; i++) {
-      if (total - 1 >= 1 || total - 1 === 0) {
+      if (total >= 1) {
         stars.push(
-          <span className={styles.star}>
+          <span className={styles.star} key={i}>
             <i className="fas fa-star" />
           </span>
         );
-      } else if (total - 1 > 0) {
+      } else if (total > 0) {
         stars.push(
-          <span className={styles.star}>
+          <span className={styles.star} key={i}>
             <i className="fas fa-star-half-alt" />
           </span>
         );
       } else {
         stars.push(
-          <span className={styles.star}>
+          <span className={styles.star} key={i}>
             <i className="far fa-star" />
           </span>
         );
@@ -45,6 +47,10 @@ const RatingsDisplay = ({ deck, setShowModal }) => {
     }
     return stars;
   };
+
+  const buttonText = deck?.ratings.some((rating) => rating.user_id === user.id)
+    ? "Update your rating"
+    : "Leave a review";
 
   return (
     <div className={styles.ratingsContainer}>
@@ -63,7 +69,7 @@ const RatingsDisplay = ({ deck, setShowModal }) => {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Leave a rating
+        {buttonText}
       </button>
     </div>
   );

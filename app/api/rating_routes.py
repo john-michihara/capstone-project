@@ -23,8 +23,6 @@ def add_deck_rating():
     form = RatingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    print(form.data)
-
     if form.validate_on_submit():
         rating = Rating(
             user_id = current_user.id,
@@ -36,5 +34,31 @@ def add_deck_rating():
 
         deck = Deck.query.get(rating.deck_id)
         print(deck.to_dict())
+        return {'deck': deck.to_dict()}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@rating_routes.route('', methods=['PUT'])
+def edit_deck_rating():
+    form = RatingForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        user_id = current_user.id,
+        deck_id = form.data['deckId'],
+        value = form.data['value']
+
+        rating = Rating.query.filter(
+            Rating.user_id == user_id,
+            Rating.deck_id == deck_id
+        ).first()
+
+        rating.value = value
+        db.session.add(rating)
+        db.session.commit()
+        print('rating', rating.to_dict())
+
+        deck = Deck.query.get(deck_id)
+        print('deck', deck.to_dict())
         return {'deck': deck.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
