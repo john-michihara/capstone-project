@@ -1,1 +1,71 @@
+.background {
+  background-color: rgb(246, 247, 251);
+  min-height: calc(100vh - 215px);
+}
 
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.leftContainer {
+  max-width: 186px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  margin-right: 30px;
+}
+
+.avatarImage {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.avatarTitle {
+  color: rgb(48, 53, 69);
+  font-size: 20px;
+  margin: 0;
+}
+
+.rightContainer {
+  max-width: 960px;
+  width: 100%;
+  padding: 16px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 4px 0px;
+}
+
+.subTitle {
+  color: rgb(48, 53, 69);
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.imagesContainer {
+  margin-bottom: 20px;
+}
+
+.image {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgb(246, 247, 251);
+  cursor: pointer;
+  transition: border 200ms;
+  margin-right: 5px;
+}
+
+.image:hover {
+  border: 1px solid rgb(221, 221, 221);
+}
