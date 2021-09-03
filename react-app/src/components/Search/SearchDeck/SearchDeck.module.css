@@ -31,6 +31,10 @@
   margin: 0;
 }
 
+.deckDetails {
+  display: flex;
+}
+
 .terms {
   color: rgb(67, 88, 172);
   background-color: rgb(235, 239, 247);
@@ -39,6 +43,15 @@
   border-radius: 15px;
   font-size: 12px;
   font-weight: bold;
+  margin-right: 10px;
+}
+
+.starIcon {
+  margin-right: 2px;
+}
+
+.ratingsLength {
+  font-weight: normal;
 }
 
 .creatorDetails {

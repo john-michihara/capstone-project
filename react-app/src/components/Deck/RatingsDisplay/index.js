@@ -24,13 +24,13 @@ const RatingsDisplay = ({ deck, setShowModal }) => {
     let total = rating;
 
     for (let i = 1; i <= 5; i++) {
-      if (total - 1 >= 1 || total - 1 === 0) {
+      if (total >= 1) {
         stars.push(
           <span className={styles.star} key={i}>
             <i className="fas fa-star" />
           </span>
         );
-      } else if (total - 1 > 0) {
+      } else if (total > 0) {
         stars.push(
           <span className={styles.star} key={i}>
             <i className="fas fa-star-half-alt" />
